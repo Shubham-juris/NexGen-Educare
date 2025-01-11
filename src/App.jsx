@@ -16,6 +16,7 @@ import CookingClassesCards from './Components/Courses/CookingClasses/CookingClas
 import LanguagesCoursesCards from './Components/Courses/LanguagesCourses/LanguagesCourses'
 import MonographCoursesCards from './Components/Courses/MonographCourses/MonographCourses'
 import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses'
+import PromoSection from './Components/Courses/Signin/Signin';
 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
-
+      
+      <PromoSection/>
       <AccountsCoursesCards/>
       <WebTechCoursesCards/>
       <CoachingClassesCards/>
