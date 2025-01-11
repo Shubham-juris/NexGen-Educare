@@ -6,8 +6,8 @@ import {
   Button,
   MenuItem,
   Card,
-  Grid,
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -15,14 +15,30 @@ import Contact from '../../assets/Contact-Us/Contact.jpg';
 
 const ContactUs = () => {
   return (
-    <Box sx={{ padding: 4 }}>
+    <Box
+      sx={{
+        padding: 4,
+        maxWidth: '1200px', // Restrict maximum width for the largest screens
+        margin: '0 auto', // Center the entire content
+      }}
+    >
       {/* Header */}
       <Typography variant='h4' align='center' gutterBottom>
         Contact Us
       </Typography>
 
       {/* Top Section: Cards */}
-      <Grid container spacing={3} sx={{ marginTop: 2 }}>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          marginTop: 2,
+          justifyContent: 'center', // Center the grid content
+          '@media (max-width: 600px)': {
+            textAlign: 'center',
+          },
+        }}
+      >
         {/* Card 1: Office */}
         <Grid item xs={12} md={4}>
           <Card
@@ -33,6 +49,8 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
+              width: '36 0px', // Ensure consistent card width
+              margin: '0 auto',
             }}
           >
             <LocationOnIcon
@@ -60,6 +78,9 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
+              // width: '100%',
+              width: '360px',
+              margin: '0 auto',
             }}
           >
             <PhoneIcon
@@ -83,6 +104,9 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
+              // width: '100%',
+              width: '360px',
+              margin: '0 auto',
             }}
           >
             <EmailIcon
@@ -100,20 +124,35 @@ const ContactUs = () => {
       </Grid>
 
       {/* Bottom Section: Paragraph, Image, and Form */}
-      <Grid container spacing={4} sx={{ marginTop: 4 }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{ marginTop: 4, justifyContent: 'center' }}
+      >
         {/* Left Side: Paragraph and Circular Image */}
         <Grid item xs={12} md={6}>
           <Box>
-            <Typography variant='h5' gutterBottom sx={{ textAlign: 'center' }}>
+            <Typography
+              variant='h5'
+              gutterBottom
+              sx={{
+                textAlign: 'left',
+                paddingLeft: 2,
+              }}
+            >
               Contact info
             </Typography>
-            <Typography gutterBottom sx={{ textAlign: 'center' }}>
+            <Typography
+              gutterBottom
+              sx={{
+                textAlign: 'justify',
+                padding: '0 16px',
+                lineHeight: 1.8,
+              }}
+            >
               Nexgen Educare Academy serves as a beacon of quality education,
-              <br />
               shaping future leaders and problem-solvers. Our academy caters to
-              <br />
               students of all age groups, offering a wide range of programs
-              <br />
               designed to meet the evolving demands of the modern world.
             </Typography>
             <Box sx={{ textAlign: 'center', marginTop: 4 }}>
@@ -133,7 +172,14 @@ const ContactUs = () => {
 
         {/* Right Side: Contact Form */}
         <Grid item xs={12} md={6}>
-          <Typography variant='h5' gutterBottom sx={{ textAlign: 'center' }}>
+          <Typography
+            variant='h5'
+            gutterBottom
+            sx={{
+              textAlign: 'center',
+              marginBottom: 2,
+            }}
+          >
             Get in touch
           </Typography>
           <Box
@@ -142,7 +188,7 @@ const ContactUs = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              maxWidth: '400px', // Make the form width smaller
+              maxWidth: '450px', // Restrict form width
               margin: '0 auto', // Center the form
             }}
             noValidate
@@ -150,7 +196,20 @@ const ContactUs = () => {
           >
             <TextField label='Name' fullWidth />
             <TextField label='Email' type='email' fullWidth />
-            <TextField label='Courses' select fullWidth>
+            <TextField
+              label='Courses'
+              select
+              fullWidth
+              SelectProps={{
+                MenuProps: {
+                  sx: {
+                    '& .MuiPaper-root': {
+                      maxHeight: 150,
+                    },
+                  },
+                },
+              }}
+            >
               <MenuItem value='Course 1'>Web Technologies Courses</MenuItem>
               <MenuItem value='Course 2'>Accounts Courses</MenuItem>
               <MenuItem value='Course 3'>Monograph Courses</MenuItem>
