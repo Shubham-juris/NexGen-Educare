@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -14,6 +14,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 import Logo from '../../assets/LogoImages/logo.png';
 
 const Search = styled('div')({
@@ -45,6 +47,13 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchBarOpen, setSearchBarOpen] = useState(false);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      offset: 50, // Offset from the top
+    });
+  }, []);
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -67,9 +76,10 @@ const Navbar = () => {
       sx={{
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
         backdropFilter: 'blur(500px)',
-        color: 'black',
+        color: 'red',
         overflowX: 'hidden',
       }}
+      data-aos='fade-down' // AOS animation applied to the entire navbar
     >
       <Toolbar
         sx={{
@@ -102,9 +112,32 @@ const Navbar = () => {
                 marginLeft: '16px',
               }}
             >
-              <Button color='inherit'>Courses</Button>
-              <Button color='inherit'>About Us</Button>
-              <Button color='inherit'>Contact Us</Button>
+              {['Courses', 'About Us', 'Contact Us'].map((text) => (
+                <Button
+                  key={text}
+                  color='inherit'
+                  sx={{
+                    position: 'relative',
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      width: '100%',
+                      height: '2px',
+                      bottom: 0,
+                      left: 0,
+                      backgroundColor: 'red',
+                      transform: 'scaleX(0)',
+                      transformOrigin: 'center',
+                      transition: 'transform 0.3s ease',
+                    },
+                    '&:hover:after': {
+                      transform: 'scaleX(1)',
+                    },
+                  }}
+                >
+                  {text}
+                </Button>
+              ))}
             </Box>
           </Box>
 
