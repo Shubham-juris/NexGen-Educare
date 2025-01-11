@@ -102,11 +102,18 @@ const WebTechCoursesCards = () => {
               }}
             >
               <CardMedia
-                component='img'
+                component="img"
                 alt={card.title}
-                sx={{ height: 200 }}
                 image={card.image}
                 title={card.title}
+                sx={{
+                  padding: '25px 25px 0px 25px',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  width: '100%',
+                  objectFit: 'cover',
+                  height: 200,
+                }}
               />
               <CardContent sx={{ backgroundColor: '#f4f4f4' }}>
                 <Typography

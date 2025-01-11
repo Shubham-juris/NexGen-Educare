@@ -10,6 +10,16 @@ import ContactUs from './Components/Contact-Us/Contact';
 // import Login from './Components/Login';
 // import SignUp from './Components/SignUp';
 
+import AccountsCoursesCards from './Components/Courses/AccountsCourses/AccountsCourses'
+import WebTechCoursesCards from './Components/Courses/WebTech/WebTech'
+import CoachingClassesCards from './Components/Courses/CoachingClasses/CoachingClasses'
+import CompetitiveCoachingCards from './Components/Courses/CompetitiveCoaching/CompetitiveCoaching'
+import CookingClassesCards from './Components/Courses/CookingClasses/CookingClasses'
+import LanguagesCoursesCards from './Components/Courses/LanguagesCourses/LanguagesCourses'
+import MonographCoursesCards from './Components/Courses/MonographCourses/MonographCourses'
+import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses'
+
+
 function App() {
   return (
     <Router>
@@ -24,6 +34,16 @@ function App() {
         {/* <Route path="/signup" element={<SignUp />} /> */}
       </Routes>
       <Footer />
+
+      <AccountsCoursesCards/>
+      <WebTechCoursesCards/>
+      <CoachingClassesCards/>
+      <CompetitiveCoachingCards/>
+      <CookingClassesCards/>
+      <LanguagesCoursesCards/>
+      <MonographCoursesCards/>
+      <HospitalistCoursesCards/>
+
     </Router>
   );
 }
