@@ -2,20 +2,39 @@ import React from 'react';
 import Grid from '@mui/material/Grid2';
 import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 
+import RealEstate from '../../../assets/Courses/MonographCourses/Real-Estate.png';
+import DispatchCourse from '../../../assets/Courses/MonographCourses/Dispatch-Course.png';
+import DentalReceptionist from '../../../assets/Courses/MonographCourses/Dental-Receptionist.png';
+import SecurityTraining from '../../../assets/Courses/MonographCourses/Security-Training.png';
+import SalesTraining from '../../../assets/Courses/MonographCourses/Sales-Training.png';
+import FoodHendler from '../../../assets/Courses/MonographCourses/Food-Hendler.png';
+import EventPlanning from '../../../assets/Courses/MonographCourses/Event-Planning.png';
+
 const cardsData = [
-  { id: 1, title: 'Web Technologies', image: 'https://via.placeholder.com/300' },
-  { id: 2, title: 'Accounts Courses', image: 'https://via.placeholder.com/300' },
-  { id: 3, title: 'Monograph Courses', image: 'https://via.placeholder.com/300' },
-  { id: 4, title: 'Languages Courses', image: 'https://via.placeholder.com/300' },
-  { id: 5, title: 'Hospitalist Courses', image: 'https://via.placeholder.com/300' },
-  { id: 6, title: 'Competitive Coaching', image: 'https://via.placeholder.com/300' },
-  { id: 7, title: 'Coaching Classes', image: 'https://via.placeholder.com/300' },
-  { id: 8, title: 'Cooking Classes', image: 'https://via.placeholder.com/300' },
+  { id: 1, title: 'Real Estate Managment', image: RealEstate },
+  { id: 2, title: 'Dispatch Course ', image: DispatchCourse },
+  { id: 3, title: 'Dental Receptionist', image: DentalReceptionist },
+  { id: 4, title: 'Security Training', image: SecurityTraining },
+  { id: 5, title: 'Sales Training', image: SalesTraining },
+  { id: 6, title: 'Food Hendler', image: FoodHendler },
+  { id: 7, title: 'Event Planning', image: EventPlanning },
 ];
 
 const MonographCoursesCards = () => {
   return (
     <Grid container spacing={2} justifyContent="center">
+      <Typography 
+        variant="h4" 
+        sx={{
+          display: 'flex', 
+          justifyContent: 'center', 
+          width: '100%', 
+          mt:4,
+          marginBottom: 3
+        }}
+      >
+      Monograph Courses 
+      </Typography>
       {cardsData.map((card) => (
         <Grid item xs={12} sm={6} md={3} key={card.id}>
           <Card
@@ -30,9 +49,16 @@ const MonographCoursesCards = () => {
             <CardMedia
               component="img"
               alt={card.title}
-              sx={{ height: 200 }}
               image={card.image}
               title={card.title}
+              sx={{
+                padding: '25px 25px 0px 25px',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100%',
+                objectFit: 'cover',
+                height: 200,
+              }}
             />
             <CardContent sx={{ backgroundColor: '#f4f4f4' }}>
               <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333' }}>

@@ -19,17 +19,17 @@ const CookingClassesCards = () => {
   return (
     <Grid container spacing={2} justifyContent="center">
       <Typography 
-                      variant="h4" 
-                      sx={{
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        width: '100%', 
-                        mt:4,
-                        marginBottom: 3
-                      }}
-                    >
-                      Cooking Classes
-                    </Typography>
+        variant="h4" 
+        sx={{
+          display: 'flex', 
+          justifyContent: 'center', 
+          width: '100%', 
+          mt:4,
+          marginBottom: 3
+        }}
+      >
+        Cooking Classes
+      </Typography>
       {cardsData.map((card) => (
         <Grid item xs={12} sm={6} md={3} key={card.id}>
           <Card
