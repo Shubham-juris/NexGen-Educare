@@ -1,112 +1,278 @@
 import React from 'react';
+import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { Link } from 'react-router-dom'; // Import Link for routing
-
-import webtech from '../../assets/Courses/WebTech/WebTechnologies.png';
-import accounts from '../../assets/Courses/AccountsCourses/accounts.png';
-import monograph from '../../assets/Courses/MonographCourses/Managements.png';
-import languages from '../../assets/Courses/LanguagesCourses/Language.png';
-import hospitalist from '../../assets/Courses/HospitalistCourses/Hospitalist.png';
-import competitive from '../../assets/Courses/CompetitiveCoaching/Competitive.png';
-import coaching from '../../assets/Courses/CoachingClasses/Coaching.png';
-import cooking from '../../assets/Courses/CookingClasses/cooking.png';
-
-const cardsData = [
-  {
-    id: 1,
-    title: 'Web Technologies',
-    image: webtech,
-    path: '/WebTechCoursesCards',
-  },
-  {
-    id: 2,
-    title: 'Accounts Courses',
-    image: accounts,
-    path: '/AccountsCoursesCards',
-  },
-  {
-    id: 3,
-    title: 'Monograph Courses',
-    image: monograph,
-    path: '/MonographCoursesCards',
-  },
-  {
-    id: 4,
-    title: 'Languages Courses',
-    image: languages,
-    path: '/LanguagesCoursesCards',
-  },
-  {
-    id: 5,
-    title: 'Hospitalist Courses',
-    image: hospitalist,
-    path: '/HospitalistCoursesCards',
-  },
-  {
-    id: 6,
-    title: 'Competitive Coaching',
-    image: competitive,
-    path: '/CompetitiveCoachingCards',
-  },
-  {
-    id: 7,
-    title: 'Coaching Classes',
-    image: coaching,
-    path: '/CoachingClassesCards',
-  },
-  {
-    id: 8,
-    title: 'Cooking Classes',
-    image: cooking,
-    path: '/CookingClassesCards',
-  },
-];
+import Web from '../../assets/Courses/WebTech/WebTechnologies.png';
+import Account from '../../assets/Courses/AccountsCourses/Accounts.png';
+import Monograph from '../../assets/Courses/MonographCourses/Monograph.png';
+import Language from '../../assets/Courses/LanguagesCourses/Language.png';
+import Hospitalist from '../../assets/Courses/HospitalistCourses/Hospitalist.png';
+import Competitive from '../../assets/Courses/CompetitiveCoaching/Competitive.png';
+import Coaching from '../../assets/Courses/CoachingClasses/Coaching.png';
+import Cooking from '../../assets/Courses/CookingClasses/Cooking.png';
+import Background from '../../assets/Courses/Background.png'; // Ensure this image path is correct
+import { red } from '@mui/material/colors';
 
 const Courses = () => {
   return (
-    <Grid container spacing={2} justifyContent='center'>
-      {cardsData.map((card) => (
-        <Grid item xs={12} sm={6} md={3} key={card.id}>
-          <Link to={card.path} style={{ textDecoration: 'none' }}>
-            {/* Link wrapping each card */}
+    <Box>
+      <Box>
+        <Typography
+          variant='h3'
+          gutterBottom
+          sx={{
+            textAlign: 'center',
+            marginTop: '20px',
+            marginBottom: '20px',
+            color: red[500], 
+            backgroundImage: `url(${Background})`,            
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat', 
+            padding: '20px', 
+            fontWeight: 'bold',
+          }}
+        >
+          Courses
+        </Typography>
+      </Box>
+      <Grid
+        container
+        spacing={4}
+        justifyContent='center' // Center the content on large screens
+        alignItems='center' // Vertically align the content
+      >
+        {/* Card 1 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='/WebTechCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: 250,
-                height: 'auto', // Allow height to adjust based on content
-                textAlign: 'center',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                borderRadius: '10px',
-                '&:hover': {
-                  boxShadow: '0 6px 12px rgba(0, 0, 0, 0.3)',
-                },
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px', // Fixed width
+                height: 'auto', // You can set a fixed height if needed, or 'auto' for dynamic height based on content
               }}
             >
               <CardMedia
                 component='img'
-                alt={card.title}
-                sx={{
-                  height: 200, // Fixed height for image
-                  objectFit: 'cover', // Ensures the image scales well
-                }}
-                image={card.image}
-                title={card.title}
+                alt='Card 1'
+                height='200'
+                image={Web}
+                sx={{ objectFit: 'cover' }}
               />
-              <CardContent sx={{ backgroundColor: '#f4f4f4', padding: '16px' }}>
-                <Typography
-                  variant='h6'
-                  sx={{ fontWeight: 'bold', color: '#333' }}
-                >
-                  {card.title}
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Web Technologies Courses
                 </Typography>
               </CardContent>
             </Card>
-          </Link>
+          </a>
         </Grid>
-      ))}
-    </Grid>
+
+        {/* Card 2 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px', // Fixed width
+                height: 'auto', // Fixed height or 'auto' for dynamic content height
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 2'
+                height='200'
+                image={Account}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Accounts Courses
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 3 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px', // Fixed width
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 3'
+                height='200'
+                image={Monograph}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Monograph Courses
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 4 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px',
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 4'
+                height='200'
+                image={Language}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Languages Courses
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 5 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px',
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 5'
+                height='200'
+                image={Hospitalist}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Hospitalist Courses
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 6 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px',
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 6'
+                height='200'
+                image={Competitive}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Competitive Coaching
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 7 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px',
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 7'
+                height='200'
+                image={Coaching}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Coaching Classes
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+
+        {/* Card 8 */}
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <a href='#' style={{ textDecoration: 'none' }}>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { transform: 'scale(1.05)' },
+                transition: 'transform 0.3s',
+                width: '280px',
+                height: 'auto',
+              }}
+            >
+              <CardMedia
+                component='img'
+                alt='Card 8'
+                height='200'
+                image={Cooking}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant='h6' component='div'>
+                  Cooking Classes
+                </Typography>
+              </CardContent>
+            </Card>
+          </a>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
