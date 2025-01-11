@@ -70,7 +70,7 @@ const Footer = () => {
                 gap: '5px',
               }}
             >
-              <Phone /> 91151 77792
+              <Phone /> +91 91151 77792
             </Typography>
             <Typography
               variant='body2'

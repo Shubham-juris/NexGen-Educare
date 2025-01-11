@@ -4,11 +4,11 @@ import NavbarAndHero from './Components/Hero/NavbarAndHero';
 import Courses from './Components/Courses/Courses';
 import Footer from './Components/Footer/Footer';
 import ContactUs from './Components/Contact-Us/Contact';
-// import AboutUs from './Components/AboutUs';  // Uncomment when needed
+import AboutUs from './Components/About-Us/About';  // Uncomment when needed
 
 // Uncomment and import other components as needed
-// import Login from './Components/Login';
-// import SignUp from './Components/SignUp';
+import Login from './Components/Login&Signup/Login';
+import Signup from './Components/Login&Signup/Signup';
 
 import AccountsCoursesCards from './Components/Courses/AccountsCourses/AccountsCourses'
 import WebTechCoursesCards from './Components/Courses/WebTech/WebTech'
@@ -28,10 +28,10 @@ function App() {
         {/* Define Routes for different paths */}
         <Route path='/Courses' element={<Courses />} />
         <Route path='/contactus' element={<ContactUs />} />
-        {/* <Route path="/about" element={<AboutUs />} /> */}
+        <Route path="/aboutus" element={<AboutUs />} />
         {/* Uncomment and add routes for other components */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
 
