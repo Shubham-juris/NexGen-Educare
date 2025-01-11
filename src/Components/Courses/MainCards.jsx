@@ -29,8 +29,8 @@ const MainCards = () => {
         <Grid item xs={12} sm={6} md={3} key={card.id}>
           <Card
             sx={{
-              width: 250, // Set a fixed width for all cards
-              height: 270, // Set a fixed height for all cards
+              width: 250, 
+              height: 270,
               textAlign: 'center',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
               borderRadius: '10px',
@@ -40,7 +40,7 @@ const MainCards = () => {
               component="img"
               alt={card.title}
               sx={{
-                height: 200, // Fixed height for the image
+                height: 200,
               }}
               image={card.image}
               title={card.title}
