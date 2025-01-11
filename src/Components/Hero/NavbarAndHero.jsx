@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link } from 'react-router-dom'; // Ensure Link is imported correctly
 import AOS from 'aos'; // Import AOS
 import 'aos/dist/aos.css'; // Import AOS styles
 import Logo from '../../assets/LogoImages/logo.png';
@@ -239,21 +239,15 @@ const NavbarAndHero = () => {
           </Box>
           <Divider />
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button onClick={closeMobileMenu} component={Link} to='/'>
+            <Button onClick={closeMobileMenu} component={Link} to='/courses'>
               Courses
             </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/'>
+            <Button onClick={closeMobileMenu} component={Link} to='/about'>
               About Us
             </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/'>
+            <Button onClick={closeMobileMenu} component={Link} to='/contact'>
               Contact Us
             </Button>
-            {/* <Button onClick={closeMobileMenu} component={Link} to='/login'>
-              Login
-            </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/signup'>
-              Sign Up
-            </Button> */}
           </Box>
         </Drawer>
       </AppBar>
