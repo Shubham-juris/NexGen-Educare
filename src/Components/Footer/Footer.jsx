@@ -28,9 +28,29 @@ const Footer = () => {
           padding: '20px',
         }}
       >
-        <Grid container spacing={4} justifyContent='space-between'>
+        <Grid
+          container
+          spacing={4}
+          justifyContent='space-between'
+          sx={{
+            '@media (max-width: 600px)': {
+              justifyContent: 'center',
+              textAlign: 'center',
+            },
+          }}
+        >
           {/* Contact Us Section */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            sx={{
+              '@media (max-width: 600px)': {
+                textAlign: 'center',
+              },
+            }}
+          >
             <Typography
               variant='h6'
               sx={{
@@ -45,23 +65,20 @@ const Footer = () => {
               variant='body2'
               sx={{
                 display: 'flex',
-                textAlign: 'centre',
+                alignItems: 'center',
+                justifyContent: 'center',
                 gap: '5px',
-                justifyContent: 'left',
               }}
             >
-              <Phone />{' '}
-              <span style={{ textAlign: 'center', display: 'block' }}>
-                91151 77792
-              </span>
+              <Phone /> 91151 77792
             </Typography>
             <Typography
               variant='body2'
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px',
                 justifyContent: 'center',
+                gap: '5px',
               }}
             >
               <Email /> nexgeneducareacademy@gmail.com
@@ -71,7 +88,7 @@ const Footer = () => {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                textAlign: 'center',
+                justifyContent: 'center',
                 gap: '5px',
               }}
             >
@@ -82,7 +99,17 @@ const Footer = () => {
           </Grid>
 
           {/* Our Services Section */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            sx={{
+              '@media (max-width: 600px)': {
+                textAlign: 'center',
+              },
+            }}
+          >
             <Typography
               variant='h6'
               sx={{
@@ -111,7 +138,17 @@ const Footer = () => {
           </Grid>
 
           {/* Support Section */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            sx={{
+              '@media (max-width: 600px)': {
+                textAlign: 'center',
+              },
+            }}
+          >
             <Typography
               variant='h6'
               sx={{
@@ -135,7 +172,17 @@ const Footer = () => {
           </Grid>
 
           {/* Follow Us Section */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            sx={{
+              '@media (max-width: 600px)': {
+                textAlign: 'center',
+              },
+            }}
+          >
             <Typography
               variant='h6'
               sx={{

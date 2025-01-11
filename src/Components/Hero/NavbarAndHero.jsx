@@ -245,7 +245,7 @@ const NavbarAndHero = () => {
             <Button onClick={closeMobileMenu} component={Link} to='/about'>
               About Us
             </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/contact'>
+            <Button onClick={closeMobileMenu} component={Link} to='/contactus'>
               Contact Us
             </Button>
           </Box>
