@@ -1,12 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Router components from react-router-dom v6
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import NavbarAndHero from './Components/Hero/NavbarAndHero';
 import Courses from './Components/Courses/Courses';
 import Footer from './Components/Footer/Footer';
 import ContactUs from './Components/Contact-Us/Contact';
-import AboutUs from './Components/About-Us/About';  // Uncomment when needed
-
-// Uncomment and import other components as needed
+import AboutUs from './Components/About-Us/About'; 
 import Login from './Components/Login&Signup/Login';
 import Signup from './Components/Login&Signup/Signup';
 
@@ -29,7 +27,6 @@ function App() {
         <Route path='/Courses' element={<Courses />} />
         <Route path='/contactus' element={<ContactUs />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        {/* Uncomment and add routes for other components */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
