@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -11,15 +11,21 @@ import Grid from '@mui/material/Grid2';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Contact from '../../assets/Contact-Us/Contact.jpg';
 
 const ContactUs = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <Box
       sx={{
         padding: 4,
-        maxWidth: '1200px', // Restrict maximum width for the largest screens
-        margin: '0 auto', // Center the entire content
+        maxWidth: '1200px',
+        margin: '0 auto',
       }}
     >
       {/* Header */}
@@ -33,14 +39,14 @@ const ContactUs = () => {
         spacing={3}
         sx={{
           marginTop: 2,
-          justifyContent: 'center', // Center the grid content
+          justifyContent: 'center',
           '@media (max-width: 600px)': {
             textAlign: 'center',
           },
         }}
       >
         {/* Card 1: Office */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -49,7 +55,7 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              width: '36 0px', // Ensure consistent card width
+              width: '360px',
               margin: '0 auto',
             }}
           >
@@ -69,7 +75,7 @@ const ContactUs = () => {
         </Grid>
 
         {/* Card 2: Phone */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -78,7 +84,6 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              // width: '100%',
               width: '360px',
               margin: '0 auto',
             }}
@@ -95,7 +100,7 @@ const ContactUs = () => {
         </Grid>
 
         {/* Card 3: Email */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -104,7 +109,6 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              // width: '100%',
               width: '360px',
               margin: '0 auto',
             }}
@@ -127,10 +131,10 @@ const ContactUs = () => {
       <Grid
         container
         spacing={4}
-        sx={{ marginTop: 4, justifyContent: 'center' }}
+        sx={{ marginTop: 4, justifyContent: 'center', gap: 6 }}
       >
         {/* Left Side: Paragraph and Circular Image */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} data-aos='fade-right'>
           <Box>
             <Typography
               variant='h5'
@@ -148,11 +152,15 @@ const ContactUs = () => {
                 textAlign: 'justify',
                 padding: '0 16px',
                 lineHeight: 1.8,
+                marginBottom: 4, // Gap between paragraph and image
               }}
             >
-              Nexgen Educare Academy serves as a beacon of quality education,
-              shaping future leaders and problem-solvers. Our academy caters to
-              students of all age groups, offering a wide range of programs
+              Nexgen Educare Academy serves as a beacon of quality education,{' '}
+              <br />
+              shaping future leaders and problem-solvers. Our academy caters{' '}
+              <br />
+              to students of all age groups, offering a wide range of programs{' '}
+              <br />
               designed to meet the evolving demands of the modern world.
             </Typography>
             <Box sx={{ textAlign: 'center', marginTop: 4 }}>
@@ -171,7 +179,7 @@ const ContactUs = () => {
         </Grid>
 
         {/* Right Side: Contact Form */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} data-aos='fade-left'>
           <Typography
             variant='h5'
             gutterBottom
@@ -188,8 +196,8 @@ const ContactUs = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              maxWidth: '450px', // Restrict form width
-              margin: '0 auto', // Center the form
+              width: '450px',
+              margin: '0 auto',
             }}
             noValidate
             autoComplete='off'

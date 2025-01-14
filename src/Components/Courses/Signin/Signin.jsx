@@ -1,94 +1,128 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import boxImage from '../../../assets/Courses/SignIn/Box.png';
 import ellipseImage from '../../../assets/Courses/SignIn/Ellipse.png';
 
 const SignUpBanner = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <Box
       sx={{
         width: '100%',
         backgroundColor: '#FF564F',
         borderRadius: '20px',
-        padding: '40px 20px',
+        padding: { xs: '20px', sm: '30px', md: '40px' },
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
         color: '#fff',
+        textAlign: 'center',
       }}
     >
-      <Grid container spacing={2} alignItems="center">
-        {/* Images Section */}
-        <Grid item xs={12} md={6} display="flex" justifyContent="space-around">
-          <Box
-            component="img"
-            src={boxImage}
-            alt="Box"
-            sx={{
-              ml:'25px',
-              mr:'20px',
-              width: '110px',
-              height: '150px',
-              objectFit: 'cover',
-            }}
-          />
-          <Box
-            component="img"
-            src={ellipseImage}
-            alt="Ellipse"
-            sx={{
-              width: '150px',
-              height: '150px',
-              ml:'20px',
-              mr:'20px',
-              borderRadius: '50%',
-              objectFit: 'cover',
-            }}
-          />
-        </Grid>
-
-        {/* Text Section */}
+      <Box
+        sx={{
+          maxWidth: '1200px',
+          width: '100%',
+        }}
+      >
         <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            ml: {xs: 0, sm:0, md:'10rem'},
-            width: '400px', 
-          }}
+          container
+          spacing={4}
+          alignItems='center'
+          justifyContent='center'
+          sx={{ gap: { xs: 4, md: 16 } }}
         >
-          <Typography
-            variant="h4"
+          {/* Images Section */}
+          <Grid
+            item
+            xs={12}
+            md={6}
             sx={{
-              fontWeight: 'bold',
-              marginBottom: '16px',
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'space-around' },
+              alignItems: 'center',
+              gap: { xs: 2, md: 10 },
             }}
+            data-aos='fade-right'
           >
-            Start for free
-          </Typography>
-          <Typography variant="body1" sx={{ marginBottom: '24px' }}>
-            If you've made it this far, you must be at least a little curious. Sign up and
-            take the first step toward your goals.
-          </Typography>
-          <Button
-            variant="contained"
+            <Box
+              component='img'
+              src={boxImage}
+              alt='Box'
+              sx={{
+                width: '110px',
+                height: '150px',
+                objectFit: 'cover',
+              }}
+            />
+            <Box
+              component='img'
+              src={ellipseImage}
+              alt='Ellipse'
+              sx={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+              }}
+            />
+          </Grid>
+
+          {/* Text Section */}
+          <Grid
+            item
+            xs={12}
+            md={6}
             sx={{
-              backgroundColor: '#fff',
-              color: '#FF564F',
-              fontWeight: 'bold',
-              padding: '10px 20px',
-              borderRadius: '50px',
-              textTransform: 'none',
+              textAlign: { xs: 'center', md: 'left' },
             }}
+            data-aos='fade-left'
           >
-            Sign up
-          </Button>
+            <Typography
+              variant='h4'
+              sx={{
+                fontWeight: 'bold',
+                marginBottom: '16px',
+              }}
+            >
+              Start for free
+            </Typography>
+            <Typography
+              variant='body1'
+              sx={{
+                marginBottom: '24px',
+              }}
+            >
+              If you've made it this far, you must be at least a little curious.{' '}
+              <br />
+              Sign up and take the first step toward your goals.
+            </Typography>
+            <Button
+              variant='contained'
+              sx={{
+                backgroundColor: '#fff',
+                color: '#FF564F',
+                fontWeight: 'bold',
+                padding: '10px 20px',
+                borderRadius: '50px',
+                textTransform: 'none',
+              }}
+            >
+              Sign up
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 };
