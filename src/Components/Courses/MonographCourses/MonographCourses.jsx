@@ -22,24 +22,24 @@ const cardsData = [
 
 const MonographCoursesCards = () => {
   return (
-    <Grid container spacing={2} justifyContent="center">
-      <Typography 
-        variant="h4" 
+    <Grid container spacing={2} justifyContent='center'>
+      <Typography
+        variant='h4'
         sx={{
-          display: 'flex', 
-          justifyContent: 'center', 
-          width: '100%', 
-          mt:4,
-          marginBottom: 3
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          mt: 4,
+          marginBottom: 3,
         }}
       >
-      Monograph Courses 
+        Monograph Courses
       </Typography>
       {cardsData.map((card) => (
         <Grid item xs={12} sm={6} md={3} key={card.id}>
           <Card
             sx={{
-              width: 250,
+              width: '280px',
               height: 320,
               textAlign: 'center',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
@@ -47,7 +47,7 @@ const MonographCoursesCards = () => {
             }}
           >
             <CardMedia
-              component="img"
+              component='img'
               alt={card.title}
               image={card.image}
               title={card.title}
@@ -61,17 +61,25 @@ const MonographCoursesCards = () => {
               }}
             />
             <CardContent sx={{ backgroundColor: '#f4f4f4' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333' }}>
+              <Typography
+                variant='h6'
+                sx={{ fontWeight: 'bold', color: '#333' }}
+              >
                 {card.title}
               </Typography>
-              <Grid container spacing={1} justifyContent="center" sx={{ marginTop: 2 }}>
+              <Grid
+                container
+                spacing={1}
+                justifyContent='center'
+                sx={{ marginTop: 2 }}
+              >
                 <Grid item>
-                  <Button variant="contained" size="small" color="primary">
+                  <Button variant='contained' size='small' color='primary'>
                     Details
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" size="small" color="secondary">
+                  <Button variant='outlined' size='small' color='secondary'>
                     Enroll
                   </Button>
                 </Grid>

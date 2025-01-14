@@ -34,7 +34,7 @@ const AccountsCoursesCards = () => {
         <Grid item xs={12} sm={6} md={3} key={card.id}>
           <Card
             sx={{
-              width: 250,
+              width: '280px',
               height: 320,
               textAlign: 'center',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import {
@@ -10,8 +10,14 @@ import {
   Email,
   LocationOn,
 } from '@mui/icons-material';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Footer = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <Box
       sx={{
@@ -45,6 +51,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
+            data-aos='fade-up'
             sx={{
               '@media (max-width: 600px)': {
                 textAlign: 'center',
@@ -56,7 +63,7 @@ const Footer = () => {
               sx={{
                 fontWeight: 'bold',
                 marginBottom: '20px',
-                color: 'red', // Red heading color
+                color: 'red',
               }}
             >
               Contact Us
@@ -104,6 +111,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
+            data-aos='fade-up'
             sx={{
               '@media (max-width: 600px)': {
                 textAlign: 'center',
@@ -115,7 +123,7 @@ const Footer = () => {
               sx={{
                 fontWeight: 'bold',
                 marginBottom: '20px',
-                color: 'red', // Red heading color
+                color: 'red',
               }}
             >
               Our Services
@@ -143,6 +151,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
+            data-aos='fade-up'
             sx={{
               '@media (max-width: 600px)': {
                 textAlign: 'center',
@@ -154,7 +163,7 @@ const Footer = () => {
               sx={{
                 fontWeight: 'bold',
                 marginBottom: '20px',
-                color: 'red', // Red heading color
+                color: 'red',
               }}
             >
               Support
@@ -177,6 +186,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
+            data-aos='fade-up'
             sx={{
               '@media (max-width: 600px)': {
                 textAlign: 'center',
@@ -188,7 +198,7 @@ const Footer = () => {
               sx={{
                 fontWeight: 'bold',
                 marginBottom: '20px',
-                color: 'red', // Red heading color
+                color: 'red',
               }}
             >
               Follow Us
@@ -224,6 +234,7 @@ const Footer = () => {
             color: '#666',
             textAlign: 'center',
           }}
+          data-aos='fade-up'
         >
           All Rights Reserved
         </Typography>

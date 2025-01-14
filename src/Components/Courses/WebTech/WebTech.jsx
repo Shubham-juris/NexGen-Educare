@@ -91,7 +91,7 @@ const WebTechCoursesCards = () => {
             {/* Wrap card with Link */}
             <Card
               sx={{
-                width: 250,
+                width: '280px',
                 height: 320,
                 textAlign: 'center',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
@@ -102,7 +102,7 @@ const WebTechCoursesCards = () => {
               }}
             >
               <CardMedia
-                component="img"
+                component='img'
                 alt={card.title}
                 image={card.image}
                 title={card.title}
