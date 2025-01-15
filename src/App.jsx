@@ -23,6 +23,7 @@ import Library from './Components/Admin/Library/Library';
 import AddCourse from './Components/Admin/Add-Courses/AddCourse';
 import NoticePage from './Components/Admin/Notification/Notice';
 import CreateNotice from './Components/Admin/Create-notice/CreateNotice';
+import CourseRoutine from './Components/Admin/CourseRoutine/CourseRoutine';
 
 function App() {
   return (
@@ -87,14 +88,13 @@ function App() {
           <Route path='/Notice' element={<NoticePage/>} />
           <Route path='/CreateNotice' element={<CreateNotice/>} />
 
+          <Route path='/CourseRoutine' element={<CourseRoutine/>} />
 
 
 
         </Routes>
         <Footer />
-        <Sidebar/>
       </Router>
-      
     </>
   );
 }
