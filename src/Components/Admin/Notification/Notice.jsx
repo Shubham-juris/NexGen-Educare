@@ -11,58 +11,7 @@ import {
 const NoticePage = () => {
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      {/* Create Notice Section */}
-      <Box
-        component={Paper}
-        elevation={2}
-        sx={{ p: 3, backgroundColor: "#f9f9f9", mb: 4 }}
-      >
-        <Typography variant="h5" gutterBottom>
-          Create A Notice
-        </Typography>
-
-        <Box component="form" noValidate autoComplete="off" sx={{ mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Title"
-            variant="outlined"
-            margin="normal"
-          />
-          <TextField
-            fullWidth
-            label="Details"
-            variant="outlined"
-            margin="normal"
-            multiline
-            rows={4}
-          />
-          <TextField
-            fullWidth
-            label="Posted By"
-            variant="outlined"
-            margin="normal"
-          />
-          <TextField
-            fullWidth
-            label="Date"
-            type="date"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            margin="normal"
-          />
-
-          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-            <Button variant="contained" color="success">
-              Save
-            </Button>
-            <Button variant="contained" color="warning">
-              Reset
-            </Button>
-          </Box>
-        </Box>
-      </Box>
-
+      
       {/* Search Notice Section */}
       <Box>
         <Typography variant="h6" gutterBottom>
@@ -77,8 +26,8 @@ const NoticePage = () => {
         </Box>
 
         {/* Example Notice */}
-        <Paper elevation={1} sx={{ mt: 3, p: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+        <Paper elevation={1} sx={{ mt: 3, p: 2,mb:5 }}>
+          <Typography variant="caption"  sx={{ color: 'red' }}>
             16 Aug, 2025
           </Typography>
           <Typography variant="body2" sx={{ mt: 1 }}>

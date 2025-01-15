@@ -1,55 +1,55 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  IconButton,
-  InputBase,
-  Avatar,
-  Collapse,
-  Menu,
-  MenuItem,
-  useMediaQuery,
-} from '@mui/material';
-import {
-  Dashboard,
-  People,
-  School,
-  MenuBook,
-  LibraryBooks,
-  Notifications,
-  Message,
-  ExpandLess,
-  ExpandMore,
-  AddBox,
-  UploadFile,
-  AccountCircle,
-} from '@mui/icons-material';
-import { useTheme } from '@mui/material/styles';
-import Logo from '../../../assets/Admin/Logo/logo.png';
+  import React from 'react';
+  import { Link } from 'react-router-dom';
+  import {
+    Box,
+    Typography,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    IconButton,
+    InputBase,
+    Avatar,
+    Collapse,
+    Menu,
+    MenuItem,
+    useMediaQuery,
+  } from '@mui/material';
+  import {
+    Dashboard,
+    People,
+    School,
+    MenuBook,
+    LibraryBooks,
+    Notifications,
+    Message,
+    ExpandLess,
+    ExpandMore,
+    AddBox,
+    UploadFile,
+    AccountCircle,
+  } from '@mui/icons-material';
+  import { useTheme } from '@mui/material/styles';
+  import Logo from '../../../assets/Admin/Logo/logo.png';
 
-const Sidebar = () => {
-  const [open, setOpen] = React.useState(false);
-  const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
+  const Sidebar = () => {
+    const [open, setOpen] = React.useState(false);
+    const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const handleSubmenuToggle = () => {
-    setOpen(!open);
-  };
+    const handleSubmenuToggle = () => {
+      setOpen(!open);
+    };
 
-  const handleProfileMenuOpen = (event) => {
-    setProfileMenuAnchor(event.currentTarget);
-  };
+    const handleProfileMenuOpen = (event) => {
+      setProfileMenuAnchor(event.currentTarget);
+    };
 
-  const handleProfileMenuClose = () => {
-    setProfileMenuAnchor(null);
-  };
+    const handleProfileMenuClose = () => {
+      setProfileMenuAnchor(null);
+    };
 
   return (
     <Box
@@ -97,29 +97,29 @@ const Sidebar = () => {
 
         {/* Menu Section */}
         <List>
-          <ListItem
-            button
-            component={Link}
-            to="/dashboard"
-            sx={{ '&:hover': { bgcolor: '#636e72' } }}
-          >
-            <ListItemIcon>
-              <Dashboard sx={{ color: 'inherit' }} />
-            </ListItemIcon>
-            {!isMobile && <ListItemText primary="Dashboard" />}
-          </ListItem>
+      <ListItem
+        button
+        component={Link}
+        to="/dashboard"
+        sx={{ '&:hover': { bgcolor: '#636e72' } }}
+      >
+        <ListItemIcon>
+          <Dashboard sx={{ color: 'inherit' }} />
+        </ListItemIcon>
+        {!isMobile && <ListItemText primary="Dashboard" />}
+      </ListItem>
 
-          <ListItem
-            button
-            component={Link}
-            to="/"
-            sx={{ '&:hover': { bgcolor: '#636e72' } }}
-          >
-            <ListItemIcon>
-              <People sx={{ color: 'inherit' }} />
-            </ListItemIcon>
-            {!isMobile && <ListItemText primary="Students" />}
-          </ListItem>
+      <ListItem
+        button
+        component={Link}
+        to="/"
+        sx={{ '&:hover': { bgcolor: '#636e72' } }}
+      >
+        <ListItemIcon>
+          <People sx={{ color: 'inherit' }} />
+        </ListItemIcon>
+        {!isMobile && <ListItemText primary="Students" />}
+      </ListItem>
 
           <ListItem
             button
@@ -192,13 +192,13 @@ const Sidebar = () => {
           <ListItem
             button
             component={Link}
-            to="/Notice"
+            to="/CreateNotice"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
               <Message sx={{ color: 'inherit' }} />
             </ListItemIcon>
-            {!isMobile && <ListItemText primary="Messages" />}
+            {!isMobile && <ListItemText primary="Add Notification" />}
           </ListItem>
 
           <ListItem
@@ -249,44 +249,44 @@ const Sidebar = () => {
                 width: '200px',
               }}
             />
-            <IconButton>
-              <Notifications />
-            </IconButton>
-            <IconButton>
-              <Message />
-            </IconButton>
+            <IconButton component={Link} to="/Notice">
+        <Notifications />
+      </IconButton>
+      <IconButton component={Link} to="/messages">
+        <Message />
+      </IconButton>
             <IconButton onClick={handleProfileMenuOpen}>
               <AccountCircle />
             </IconButton>
           </Box>
         </Box>
 
-        {/* Profile Menu */}
-        <Menu
-          anchorEl={profileMenuAnchor}
-          open={Boolean(profileMenuAnchor)}
-          onClose={handleProfileMenuClose}
-        >
-          <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleProfileMenuClose}>Settings</MenuItem>
-          <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
-        </Menu>
+          {/* Profile Menu */}
+          <Menu
+            anchorEl={profileMenuAnchor}
+            open={Boolean(profileMenuAnchor)}
+            onClose={handleProfileMenuClose}
+          >
+            <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleProfileMenuClose}>Settings</MenuItem>
+            <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
+          </Menu>
 
-        {/* Main Content */}
-        <Box
-          sx={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            p: 2,
-          }}
-        >
-          <Typography>Welcome to the Admin Dashboard!</Typography>
+          {/* Main Content */}
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              p: 2,
+            }}
+          >
+            <Typography>Welcome to the Admin Dashboard!</Typography>
+          </Box>
         </Box>
       </Box>
-    </Box>
-  );
-};
+    );
+  };
 
 export default Sidebar;
