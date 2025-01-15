@@ -26,10 +26,20 @@ const ContactUs = () => {
         padding: 4,
         maxWidth: '1200px',
         margin: '0 auto',
+        '@media (max-width: 600px)': {
+          padding: 2,
+        },
       }}
     >
       {/* Header */}
-      <Typography variant='h4' align='center' gutterBottom>
+      <Typography
+        variant='h4'
+        align='center'
+        gutterBottom
+        sx={{
+          fontSize: { xs: '1.8rem', sm: '2rem' },
+        }}
+      >
         Contact Us
       </Typography>
 
@@ -40,13 +50,10 @@ const ContactUs = () => {
         sx={{
           marginTop: 2,
           justifyContent: 'center',
-          '@media (max-width: 600px)': {
-            textAlign: 'center',
-          },
         }}
       >
         {/* Card 1: Office */}
-        <Grid item xs={12} md={4} data-aos='fade-up'>
+        <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -55,8 +62,8 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              width: '360px',
               margin: '0 auto',
+              width: { xs: '295px', sm: '360px' },
             }}
           >
             <LocationOnIcon
@@ -75,7 +82,7 @@ const ContactUs = () => {
         </Grid>
 
         {/* Card 2: Phone */}
-        <Grid item xs={12} md={4} data-aos='fade-up'>
+        <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -84,8 +91,8 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              width: '360px',
               margin: '0 auto',
+              width: { xs: '295px', sm: '360px' },
             }}
           >
             <PhoneIcon
@@ -100,7 +107,7 @@ const ContactUs = () => {
         </Grid>
 
         {/* Card 3: Email */}
-        <Grid item xs={12} md={4} data-aos='fade-up'>
+        <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
               display: 'flex',
@@ -109,8 +116,8 @@ const ContactUs = () => {
               justifyContent: 'center',
               height: '200px',
               padding: 2,
-              width: '360px',
               margin: '0 auto',
+              width: { xs: '295px', sm: '360px' },
             }}
           >
             <EmailIcon
@@ -131,7 +138,10 @@ const ContactUs = () => {
       <Grid
         container
         spacing={4}
-        sx={{ marginTop: 4, justifyContent: 'center', gap: 6 }}
+        sx={{
+          marginTop: 4,
+          justifyContent: 'center',
+        }}
       >
         {/* Left Side: Paragraph and Circular Image */}
         <Grid item xs={12} md={6} data-aos='fade-right'>
@@ -140,8 +150,8 @@ const ContactUs = () => {
               variant='h5'
               gutterBottom
               sx={{
-                textAlign: 'left',
-                paddingLeft: 2,
+                textAlign: { xs: 'center', md: 'left' },
+                paddingLeft: { xs: 0, md: 2 },
               }}
             >
               Contact info
@@ -150,27 +160,29 @@ const ContactUs = () => {
               gutterBottom
               sx={{
                 textAlign: 'justify',
-                padding: '0 16px',
+                padding: { xs: 1, md: '0 16px' },
                 lineHeight: 1.8,
-                marginBottom: 4, // Gap between paragraph and image
               }}
             >
-              Nexgen Educare Academy serves as a beacon of quality education,{' '}
-              <br />
-              shaping future leaders and problem-solvers. Our academy caters{' '}
-              <br />
-              to students of all age groups, offering a wide range of programs{' '}
-              <br />
+              Nexgen Educare Academy serves as a beacon of quality education,<br />
+              shaping future leaders and problem-solvers. Our academy caters to <br />
+              students of all age groups, offering a wide range of programs <br />
               designed to meet the evolving demands of the modern world.
             </Typography>
-            <Box sx={{ textAlign: 'center', marginTop: 4 }}>
+            <Box
+              sx={{
+                textAlign: 'center',
+                marginTop: 4,
+              }}
+            >
               <img
                 src={Contact}
                 alt='Contact'
                 style={{
                   borderRadius: '50%',
-                  width: '240px',
-                  height: '240px',
+                  width: '100%',
+                  maxWidth: '240px',
+                  height: 'auto',
                   border: '3px solid #ccc',
                 }}
               />
@@ -196,7 +208,7 @@ const ContactUs = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              width: '450px',
+              width: {xs:'270px', sm:'300px', md:'450px'},             
               margin: '0 auto',
             }}
             noValidate

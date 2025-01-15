@@ -20,13 +20,15 @@ const SignUpBanner = () => {
       sx={{
         width: '100%',
         backgroundColor: '#FF564F',
-        borderRadius: '20px',
+        borderRadius: '100px',
         padding: { xs: '20px', sm: '30px', md: '40px' },
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         color: '#fff',
         textAlign: 'center',
+        mt: '4%',
+        mb: '4%',
       }}
     >
       <Box

@@ -11,6 +11,8 @@ import Coaching from '../../assets/Courses/CoachingClasses/Coaching.png';
 import Cooking from '../../assets/Courses/CookingClasses/Cooking.png';
 import Background from '../../assets/Courses/Background.png'; // Ensure this image path is correct
 import { red } from '@mui/material/colors';
+import { Link } from 'react-router-dom';
+import SignUpBanner from './Signin/Signin';
 
 const Courses = () => {
   return (
@@ -24,7 +26,7 @@ const Courses = () => {
             marginTop: '20px',
             marginBottom: '20px',
             color: red[500], 
-            backgroundImage: `url(${Background})`,            
+            backgroundImage:` url(${Background})`,            
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat', 
             padding: '20px', 
@@ -42,7 +44,7 @@ const Courses = () => {
       >
         {/* Card 1 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='/WebTechCoursesCards' style={{ textDecoration: 'none' }}>
+          <Link to='/WebTechCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -66,12 +68,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 2 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/AccountsCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -95,12 +97,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 3 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='' style={{ textDecoration: 'none' }}>
+          <Link to='/MonographCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -124,12 +126,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 4 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/LanguagesCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -153,12 +155,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 5 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/HospitalistCoursesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -182,12 +184,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 6 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/CompetitiveCoachingCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -211,12 +213,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 7 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/CoachingClassesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -240,12 +242,12 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
 
         {/* Card 8 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <a href='#' style={{ textDecoration: 'none' }}>
+          <Link to='/CookingClassesCards' style={{ textDecoration: 'none' }}>
             <Card
               sx={{
                 display: 'flex',
@@ -269,9 +271,10 @@ const Courses = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         </Grid>
       </Grid>
+      <SignUpBanner/>
     </Box>
   );
 };
