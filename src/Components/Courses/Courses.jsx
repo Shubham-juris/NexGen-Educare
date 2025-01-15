@@ -64,7 +64,7 @@ const Courses = () => {
               />
               <CardContent>
                 <Typography variant='h6' component='div'>
-                  Web Technologies Courses
+                  Web Tech Courses
                 </Typography>
               </CardContent>
             </Card>

@@ -54,6 +54,49 @@ const About = () => {
         "Sports training to promote physical fitness and teamwork.",
         "Participation in national and international academic and cultural competitions."
       ]
+    },
+    {
+      title: "Our Achievements",
+      details: [
+        "Consistently high results in board exams and competitive tests.",
+        "Alumni placed in prestigious universities and organizations worldwide.",
+        "Recipient of numerous awards for excellence in education.",
+        "Collaboration with reputed institutions for advanced learning programs."
+      ]
+    },
+    {
+      title: "Why Choose NexGen Educare Academy?",
+      details: [
+        "Proven Track Record: Decades of experience in shaping successful students.",
+        "Comprehensive Curriculum: Balancing academics with skill development.",
+        "Advanced Teaching Methods: Integration of technology and traditional techniques.",
+        "Holistic Development: Focusing on academic, emotional, and social growth.",
+        "Strong Community: A network of supportive peers, parents, and educators."
+      ]
+    },
+    {
+      title: "State-of-the-Art Infrastructure",
+      details: [
+        "Smart classrooms with audio-visual aids for interactive learning.",
+        "Well-equipped science and computer labs for practical education.",
+        "Comfortable and safe learning spaces with a student-first approach."
+      ]
+    },
+    {
+      title: "Expert Faculty",
+      details: [
+        "A team of highly qualified and experienced educators.",
+        "Regular training for teachers to stay updated with the latest educational trends.",
+        "Mentors who are dedicated to inspiring and guiding students."
+      ]
+    },
+    {
+      title: "Student-Centric Approach",
+      details: [
+        "Individualized attention to address unique learning needs.",
+        "Regular parent-teacher meetings for collaborative growth.",
+        "Focus on mental health and well-being through counseling support."
+      ]
     }
   ];
 
@@ -80,7 +123,7 @@ const About = () => {
           alt="About Us"
           sx={{
             width: { xs: "100%", sm: 500 },
-            height: { xs: "auto", sm: 450 },
+            height: { xs: "100%", sm: 450 },
             borderRadius: "8px",
             boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
             transition: "transform 0.2s ease, box-shadow 0.3s ease",
@@ -110,20 +153,33 @@ const About = () => {
           textAlign: "center"
         }}
       >
+        
+        <Container sx={{ backgroundColor: "rgba(255, 255, 255, 0.85)",  padding: { xs: '3rem', sm: '4rem' }, width: '80%' }}>
         <Typography variant="h4" sx={{ marginY: 3, fontWeight: 'bold' }}>
           What We Offer
         </Typography>
-        <Container sx={{ backgroundColor: "rgba(255, 255, 255, 0.85)", padding: 4, width: '70%' }}>
           <Grid container spacing={1}>
             {offerings.map((offer, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <Box sx={{ marginBottom: 4, textAlign: "left"  }}>
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Box
+                  sx={{
+                    marginBottom: 4,
+                    textAlign: "left",
+                    transition: "transform 0.3s ease",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0 8px 16px rgba(0,0,0,0.2)"
+                    }
+                  }}
+                >
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {offer.title}
                   </Typography>
                   <ul style={{ paddingLeft: "20px" }}>
                     {offer.details.map((detail, detailIndex) => (
-                      <li key={detailIndex}>{detail}</li>
+                      <li key={detailIndex}>
+                        <Typography>{detail}</Typography>
+                      </li>
                     ))}
                   </ul>
                 </Box>
