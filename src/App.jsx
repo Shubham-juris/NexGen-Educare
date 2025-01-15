@@ -17,6 +17,11 @@ import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/Hos
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
+import StudentAttendance from './Components/Admin/StudentAttandence/StudentAttandence';
+import TeacherAttandence from './Components/Admin/TeacherAttandence/TeacherAttandence';
+import Library from './Components/Admin/Library/Library';
+import AddCourse from './Components/Admin/Add-Courses/AddCourse';
+import NoticePage from './Components/Admin/Notification/Notice';
 
 function App() {
   return (
@@ -70,11 +75,20 @@ function App() {
             path='/MonographCoursesCards'
             element={<MonographCoursesCards />}
           />
+
+
+
+          <Route path='/Sidebar' element={<Sidebar />} />
+          <Route path='/StudentAttendanceTable' element={<StudentAttendance />} />
+          <Route path='/TeacherAttandence' element={<TeacherAttandence />} />
+          <Route path='/Library' element={<Library/>} />
+          <Route path='/Addcourse' element={<AddCourse/>} />
+          <Route path='/Notice' element={<NoticePage/>} />
+
+
+
         </Routes>
         <Footer />
-
-        {/* <PromoSection /> */}
-        <Sidebar/>
       </Router>
     </>
   );
