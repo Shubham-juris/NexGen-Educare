@@ -51,19 +51,19 @@ const Sidebar = () => {
     setProfileMenuAnchor(null);
   };
 
-
-  
-
   return (
     <Box
       sx={{
         display: 'flex',
-        height: 'auto',
+        height: '100vh',
       }}
     >
       {/* Sidebar */}
       <Box
         sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
           width: isMobile ? '70px' : '240px',
           bgcolor: '#b2bec3',
           color: '#fff',
@@ -71,10 +71,12 @@ const Sidebar = () => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           transition: 'width 0.3s ease',
+          height: '100vh',
+          paddingTop: '16px',
         }}
       >
         {/* Logo Section */}
-        <Box sx={{ p: 2, textAlign: 'center' }}>
+        <Box sx={{ textAlign: 'center' }}>
           <Avatar
             src={Logo}
             alt='Logo'
@@ -95,122 +97,122 @@ const Sidebar = () => {
 
         {/* Menu Section */}
         <List>
-      <ListItem
-        button
-        component={Link}
-        to="/dashboard"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <Dashboard sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Dashboard" />}
-      </ListItem>
-
-      <ListItem
-        button
-        component={Link}
-        to="/"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <People sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Students" />}
-      </ListItem>
-
-      <ListItem
-        button
-        component={Link}
-        to="/"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <School sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Teacher" />}
-      </ListItem>
-
-      <ListItem
-        button
-        component={Link}
-        to="/Library"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <MenuBook sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Library" />}
-      </ListItem>
-
-      <ListItem
-        button
-        component={Link}
-        to="/Addcourse  "
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <AddBox sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Add Courses" />}
-      </ListItem>
-
-      <ListItem
-        button
-        onClick={handleSubmenuToggle}
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <LibraryBooks sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Attendance" />}
-        {!isMobile && (open ? <ExpandLess /> : <ExpandMore />)}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
           <ListItem
             button
             component={Link}
-            to="/StudentAttendanceTable"
-            sx={{ pl: 4, '&:hover': { bgcolor: '#636e72' } }}
+            to="/dashboard"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
-            <ListItemText primary="Students" />
+            <ListItemIcon>
+              <Dashboard sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Dashboard" />}
           </ListItem>
+
           <ListItem
             button
             component={Link}
-            to="/TeacherAttandence"
-            sx={{ pl: 4, '&:hover': { bgcolor: '#636e72' } }}
+            to="/"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
-            <ListItemText primary="Teacher" />
+            <ListItemIcon>
+              <People sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Students" />}
+          </ListItem>
+
+          <ListItem
+            button
+            component={Link}
+            to="/"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <School sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Teacher" />}
+          </ListItem>
+
+          <ListItem
+            button
+            component={Link}
+            to="/Library"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <MenuBook sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Library" />}
+          </ListItem>
+
+          <ListItem
+            button
+            component={Link}
+            to="/Addcourse"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <AddBox sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Add Courses" />}
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={handleSubmenuToggle}
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <LibraryBooks sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Attendance" />}
+            {!isMobile && (open ? <ExpandLess /> : <ExpandMore />)}
+          </ListItem>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem
+                button
+                component={Link}
+                to="/StudentAttendanceTable"
+                sx={{ pl: 4, '&:hover': { bgcolor: '#636e72' } }}
+              >
+                <ListItemText primary="Students" />
+              </ListItem>
+              <ListItem
+                button
+                component={Link}
+                to="/TeacherAttandence"
+                sx={{ pl: 4, '&:hover': { bgcolor: '#636e72' } }}
+              >
+                <ListItemText primary="Teacher" />
+              </ListItem>
+            </List>
+          </Collapse>
+
+          <ListItem
+            button
+            component={Link}
+            to="/Notice"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <Message sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Messages" />}
+          </ListItem>
+
+          <ListItem
+            button
+            component={Link}
+            to="/exam-upload"
+            sx={{ '&:hover': { bgcolor: '#636e72' } }}
+          >
+            <ListItemIcon>
+              <UploadFile sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Exam Upload" />}
           </ListItem>
         </List>
-      </Collapse>
-
-      <ListItem
-        button
-        component={Link}
-        to="/Notice"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <Message sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Messages" />}
-      </ListItem>
-
-      <ListItem
-        button
-        component={Link}
-        to="/exam-upload"
-        sx={{ '&:hover': { bgcolor: '#636e72' } }}
-      >
-        <ListItemIcon>
-          <UploadFile sx={{ color: 'inherit' }} />
-        </ListItemIcon>
-        {!isMobile && <ListItemText primary="Exam Upload" />}
-      </ListItem>
-    </List>
       </Box>
 
       {/* Content Area */}
@@ -220,6 +222,9 @@ const Sidebar = () => {
           display: 'flex',
           flexDirection: 'column',
           bgcolor: '#f1f3f4',
+          marginLeft: isMobile ? '70px' : '240px',
+          height: '100vh',
+          overflowY: 'auto', // This makes the content scrollable
         }}
       >
         {/* Top Bar */}

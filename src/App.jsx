@@ -89,7 +89,9 @@ function App() {
 
         </Routes>
         <Footer />
+        <Sidebar/>
       </Router>
+      
     </>
   );
 }
