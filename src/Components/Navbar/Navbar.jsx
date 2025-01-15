@@ -232,6 +232,7 @@ const Navbar = () => {
                 onClick={closeMobileMenu}
                 component={StyledLink}
                 to={`/${text.replace(' ', '').toLowerCase()}`}
+                style={{ color: 'red' }}
               >
                 {text}
               </Button>
