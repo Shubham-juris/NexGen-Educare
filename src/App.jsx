@@ -22,6 +22,7 @@ import TeacherAttandence from './Components/Admin/TeacherAttandence/TeacherAttan
 import Library from './Components/Admin/Library/Library';
 import AddCourse from './Components/Admin/Add-Courses/AddCourse';
 import NoticePage from './Components/Admin/Notification/Notice';
+import CreateNotice from './Components/Admin/Create-notice/CreateNotice';
 
 function App() {
   return (
@@ -84,6 +85,8 @@ function App() {
           <Route path='/Library' element={<Library/>} />
           <Route path='/Addcourse' element={<AddCourse/>} />
           <Route path='/Notice' element={<NoticePage/>} />
+          <Route path='/CreateNotice' element={<CreateNotice/>} />
+
 
 
 
