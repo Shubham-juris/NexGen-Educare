@@ -22,7 +22,8 @@ const Footer = () => {
     <Box
       sx={{
         backgroundColor: '#f0f0f0',
-        textAlign: 'center',
+        
+        
         width: '100%',
         padding: '20px 0',
       }}
@@ -37,189 +38,100 @@ const Footer = () => {
         <Grid
           container
           spacing={4}
-          justifyContent='space-between'
+          justifyContent="space-between"
           sx={{
             '@media (max-width: 600px)': {
               justifyContent: 'center',
-              textAlign: 'center',
             },
           }}
         >
           {/* Contact Us Section */}
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={3}
-            data-aos='fade-up'
-            sx={{
-              '@media (max-width: 600px)': {
-                textAlign: 'center',
-              },
-            }}
-          >
-            <Typography
-              variant='h6'
-              sx={{
-                fontWeight: 'bold',
-                marginBottom: '20px',
-                color: 'red',
-              }}
-            >
+          <Grid item xs={12} sm={6} md={3} data-aos="fade-up">
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', color: 'red' }}>
               Contact Us
             </Typography>
             <Typography
-              variant='body2'
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '5px',
-              }}
+              variant="body2"
+              sx={{ display: 'flex', alignItems: 'center', gap: '1em', justifyContent: 'left' }}
             >
-              <Phone /> +91 91151 77792
+              <Phone />
+              <Link href="tel:+919115177792" sx={{ textDecoration: 'none', color: 'inherit' }}>
+                +91 91151 77792
+              </Link>
             </Typography>
             <Typography
-              variant='body2'
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '5px',
-              }}
+              variant="body2"
+              sx={{ display: 'flex', mt:0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
             >
-              <Email /> nexgeneducareacademy@gmail.com
+              <Email />
+              <Link href="mailto:nexgeneducareacademy@gmail.com" sx={{ textDecoration: 'none', color: 'inherit' }}>
+                nexgeneducareacademy@gmail.com
+              </Link>
             </Typography>
             <Typography
-              variant='body2'
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '5px',
-              }}
+              variant="body2"
+              sx={{ display: 'flex', mt:0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
             >
-              <LocationOn /> SCO 4-5, Second Floor, New Sunny <br />
-              Enclave, Sector-125, Mohali, <br />
-              Kharar Punjab - 140301
+              <LocationOn />
+              SCO 4-5, Second Floor, New Sunny Enclave,<br /> Sector-125, Mohali, Punjab - 140301
             </Typography>
           </Grid>
 
           {/* Our Services Section */}
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={3}
-            data-aos='fade-up'
-            sx={{
-              '@media (max-width: 600px)': {
-                textAlign: 'center',
-              },
-            }}
-          >
-            <Typography
-              variant='h6'
-              sx={{
-                fontWeight: 'bold',
-                marginBottom: '20px',
-                color: 'red',
-              }}
-            >
+          <Grid item xs={12} sm={6} md={3} data-aos="fade-up">
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', color: 'red' }}>
               Our Services
             </Typography>
-            <Typography variant='body2'>
-              <Link href='#' sx={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="body2">
+              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
                 Home
               </Link>
             </Typography>
-            <Typography variant='body2'>
-              <Link href='#' sx={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="body2">
+              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
                 About Us
               </Link>
             </Typography>
-            <Typography variant='body2'>
-              <Link href='#' sx={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="body2">
+              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
                 Courses
               </Link>
             </Typography>
           </Grid>
 
           {/* Support Section */}
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={3}
-            data-aos='fade-up'
-            sx={{
-              '@media (max-width: 600px)': {
-                textAlign: 'center',
-              },
-            }}
-          >
-            <Typography
-              variant='h6'
-              sx={{
-                fontWeight: 'bold',
-                marginBottom: '20px',
-                color: 'red',
-              }}
-            >
+          <Grid item xs={12} sm={6} md={3} data-aos="fade-up">
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '1rem', color: 'red' }}>
               Support
             </Typography>
-            <Typography variant='body2'>
-              <Link href='#' sx={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="body2">
+              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
                 Privacy Policy
               </Link>
             </Typography>
-            <Typography variant='body2'>
-              <Link href='#' sx={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="body2">
+              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
                 Terms & Conditions
               </Link>
             </Typography>
           </Grid>
 
           {/* Follow Us Section */}
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={3}
-            data-aos='fade-up'
-            sx={{
-              '@media (max-width: 600px)': {
-                textAlign: 'center',
-              },
-            }}
-          >
-            <Typography
-              variant='h6'
-              sx={{
-                fontWeight: 'bold',
-                marginBottom: '20px',
-                color: 'red',
-              }}
-            >
+          <Grid item xs={12} sm={6} md={3} data-aos="fade-up">
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '20px', color: 'red' }}>
               Follow Us
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '10px',
-              }}
-            >
-              <Link href='#' sx={{ color: 'inherit' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'left', gap: '10px' }}>
+              <Link href="#" sx={{ color: 'inherit' }}>
                 <Facebook />
               </Link>
-              <Link href='#' sx={{ color: 'inherit' }}>
+              <Link href="#" sx={{ color: 'inherit' }}>
                 <Instagram />
               </Link>
-              <Link href='#' sx={{ color: 'inherit' }}>
+              <Link href="#" sx={{ color: 'inherit' }}>
                 <Twitter />
               </Link>
-              <Link href='#' sx={{ color: 'inherit' }}>
+              <Link href="#" sx={{ color: 'inherit' }}>
                 <LinkedIn />
               </Link>
             </Box>
@@ -228,13 +140,13 @@ const Footer = () => {
 
         {/* Footer Text */}
         <Typography
-          variant='body2'
+          variant="body2"
           sx={{
             marginTop: '20px',
             color: '#666',
             textAlign: 'center',
           }}
-          data-aos='fade-up'
+          data-aos="fade-up"
         >
           All Rights Reserved
         </Typography>
