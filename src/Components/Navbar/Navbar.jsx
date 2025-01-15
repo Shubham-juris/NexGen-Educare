@@ -14,10 +14,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import { Link } from 'react-router-dom'; // Ensure Link is imported correctly
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Logo from '../../assets/LogoImages/logo.png';
+
+// Global Link Style
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+  color: 'red',
+});
 
 const Search = styled('div')({
   position: 'relative',
@@ -50,8 +56,8 @@ const Navbar = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1500, // Animation duration
-      offset: 50, // Offset from the top
+      duration: 1500,
+      offset: 50,
     });
   }, []);
 
@@ -100,12 +106,14 @@ const Navbar = () => {
               width: '100%',
             }}
           >
-            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }} component={Link} to='/'>
-              <img
-                src={Logo}
-                alt='Logo'
-                style={{ height: '40px', width: 'auto', cursor: 'pointer' }}
-              />
+            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+              <StyledLink to='/'>
+                <img
+                  src={Logo}
+                  alt='Logo'
+                  style={{ height: '40px', width: 'auto', cursor: 'pointer' }}
+                />
+              </StyledLink>
               <Box
                 sx={{
                   display: { xs: 'none', md: 'flex' },
@@ -116,9 +124,9 @@ const Navbar = () => {
                 {['Courses', 'About Us', 'Contact Us'].map((text) => (
                   <Button
                     key={text}
-                    color='inherit'
                     sx={{
                       position: 'relative',
+                      color: 'red',
                       '&:after': {
                         content: '""',
                         position: 'absolute',
@@ -135,7 +143,7 @@ const Navbar = () => {
                         transform: 'scaleX(1)',
                       },
                     }}
-                    component={Link}
+                    component={StyledLink}
                     to={`/${text.replace(' ', '').toLowerCase()}`}
                   >
                     {text}
@@ -173,10 +181,10 @@ const Navbar = () => {
             </Box>
 
             <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-              <Button color='inherit' component={Link} to='/login'>
+              <Button sx={{ color: 'red' }} component={StyledLink} to='/login'>
                 Login
               </Button>
-              <Button color='inherit' component={Link} to='/signup'>
+              <Button sx={{ color: 'red' }} component={StyledLink} to='/signup'>
                 Sign Up
               </Button>
             </Box>
@@ -218,14 +226,31 @@ const Navbar = () => {
           </Box>
           <Divider />
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button onClick={closeMobileMenu} component={Link} to='/courses'>
-              Courses
+            {['Courses', 'About Us', 'Contact Us'].map((text) => (
+              <Button
+                key={text}
+                onClick={closeMobileMenu}
+                component={StyledLink}
+                to={`/${text.replace(' ', '').toLowerCase()}`}
+              >
+                {text}
+              </Button>
+            ))}
+            <Button
+              sx={{ color: 'red' }}
+              onClick={closeMobileMenu}
+              component={StyledLink}
+              to='/login'
+            >
+              Login
             </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/aboutus'>
-              About Us
-            </Button>
-            <Button onClick={closeMobileMenu} component={Link} to='/contactus'>
-              Contact Us
+            <Button
+              sx={{ color: 'red' }}
+              onClick={closeMobileMenu}
+              component={StyledLink}
+              to='/signup'
+            >
+              Sign Up
             </Button>
           </Box>
         </Drawer>
