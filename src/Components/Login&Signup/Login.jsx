@@ -14,12 +14,15 @@ import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import LoginImage from '../../assets/Login&Signup/Login&Signup.jpg'; // Correctly import the image
+import { useNavigate } from 'react-router-dom';
+import LoginImage from '../../assets/Login&Signup/Login&Signup.jpg';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [formKey, setFormKey] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     AOS.init({ duration: 2000 });
@@ -31,14 +34,17 @@ const Login = () => {
     const studentId = formData.get('studentId');
     const password = formData.get('password');
 
-    // Handle login logic here
-    console.log('Student ID:', studentId);
-    console.log('Password:', password);
+    if (studentId === 'admin' && password === 'admin123') {
+      setOpenSnackbar(true);
+      setLoginError('');
+      onLogin(); // Update login state
+      setTimeout(() => {
+        navigate('/Sidebar'); // Navigate to Sidebar
+      }, 1000);
+    } else {
+      setLoginError('Invalid credentials. Please try again.');
+    }
 
-    // Show success message
-    setOpenSnackbar(true);
-
-    // Reset form
     setFormKey((prevKey) => prevKey + 1);
   };
 
@@ -57,17 +63,17 @@ const Login = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: `url(${LoginImage})`, // Use the imported image here
+        backgroundImage: `url(${LoginImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <Container maxWidth='xs'>
+      <Container maxWidth="xs">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          data-aos='fade-up'
+          data-aos="fade-up"
         >
           <Box
             sx={{
@@ -81,40 +87,40 @@ const Login = () => {
               boxShadow: 3,
             }}
           >
-            <Typography component='h1' variant='h5'>
+            <Typography component="h1" variant="h5">
               Student Login
             </Typography>
             <Box
               key={formKey}
-              component='form'
+              component="form"
               onSubmit={handleSubmit}
               sx={{ mt: 3 }}
             >
               <TextField
-                margin='normal'
+                margin="normal"
                 required
                 fullWidth
-                id='studentId'
-                label='Student ID'
-                name='studentId'
-                autoComplete='student-id'
+                id="studentId"
+                label="Student ID"
+                name="studentId"
+                autoComplete="student-id"
                 autoFocus
               />
               <TextField
-                margin='normal'
+                margin="normal"
                 required
                 fullWidth
-                name='password'
-                label='Password'
+                name="password"
+                label="Password"
                 type={showPassword ? 'text' : 'password'}
-                id='password'
-                autoComplete='current-password'
+                id="password"
+                autoComplete="current-password"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       <IconButton
                         onClick={handleTogglePasswordVisibility}
-                        edge='end'
+                        edge="end"
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -122,21 +128,33 @@ const Login = () => {
                   ),
                 }}
               />
+              {loginError && (
+                <Typography
+                  color="error"
+                  sx={{ mt: 1, textAlign: 'center' }}
+                >
+                  {loginError}
+                </Typography>
+              )}
               <Button
-                type='submit'
+                type="submit"
                 fullWidth
-                variant='contained'
+                variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Login
               </Button>
               <Typography
-                type='submit'
-                fullWidth
-                variant='contained'
-                sx={{ mt: 3, mb: 2 }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                  color: 'primary.main',
+                }}
               >
-                Forget Password
+                Forgot Password?
               </Typography>
             </Box>
           </Box>
@@ -150,10 +168,10 @@ const Login = () => {
       >
         <Alert
           onClose={handleCloseSnackbar}
-          severity='success'
+          severity="success"
           sx={{ width: '100%' }}
         >
-          Login successful!
+          Login successful! Redirecting...
         </Alert>
       </Snackbar>
     </Box>
