@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Typography, Link } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import {
   Facebook,
@@ -12,6 +12,7 @@ import {
 } from '@mui/icons-material';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   useEffect(() => {
@@ -51,30 +52,46 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography
-              variant="body2"
-              sx={{ display: 'flex', alignItems: 'center', gap: '1em', justifyContent: 'left' }}
-            >
-              <Phone />
-              <Link href="tel:+919115177792" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                +91 91151 77792
-              </Link>
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ display: 'flex', mt:0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
-            >
-              <Email />
-              <Link href="mailto:nexgeneducareacademy@gmail.com" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                nexgeneducareacademy@gmail.com
-              </Link>
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ display: 'flex', mt:0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
-            >
-              <LocationOn />
-              SCO 4-5, Second Floor, New Sunny Enclave,<br /> Sector-125, Mohali, Punjab - 140301
-            </Typography>
+  variant="body2"
+  sx={{ display: 'flex', alignItems: 'center', gap: '1em', justifyContent: 'left' }}
+>
+  <Phone />
+  <Link
+    to="tel:+919115177792"
+    style={{ textDecoration: 'none', color: 'black' }} // Inline styling for black color and no text decoration
+  >
+    +91 91151 77792
+  </Link>
+</Typography>
+<Typography
+  variant="body2"
+  sx={{ display: 'flex', mt: 0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
+>
+  <Email />
+  <Link
+    to="mailto:nexgeneducareacademy@gmail.com"
+    style={{ textDecoration: 'none', color: 'black' }} // Inline styling for black color and no text decoration
+  >
+    nexgeneducareacademy@gmail.com
+  </Link>
+</Typography>
+
+<Typography
+  variant="body2"
+  sx={{ display: 'flex', mt: 0.5, alignItems: 'center', gap: '1em', justifyContent: 'left' }}
+>
+  <LocationOn />
+  <Link
+    to="https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301"
+    target="_blank" // Opens in a new tab
+    style={{ textDecoration: 'none', color: 'black' }} // Styling to remove underline and set color
+  >
+    SCO 4-5, Second Floor, New Sunny Enclave,
+    <br />
+    Sector-125, Mohali, Punjab - 140301
+  </Link>
+</Typography>
+
           </Grid>
 
           {/* Our Services Section */}
@@ -83,20 +100,29 @@ const Footer = () => {
               Our Services
             </Typography>
             <Typography variant="body2">
-              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                Home
-              </Link>
-            </Typography>
-            <Typography variant="body2">
-              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                About Us
-              </Link>
-            </Typography>
-            <Typography variant="body2">
-              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                Courses
-              </Link>
-            </Typography>
+    <Link
+      to="/"
+      style={{ textDecoration: 'none', color: 'black' }} // Style applied here
+    >
+      Home
+    </Link>
+  </Typography>
+  <Typography variant="body2">
+    <Link
+      to="/AboutUs"
+      style={{ textDecoration: 'none', color: 'black' }} // Style applied here
+    >
+      About Us
+    </Link>
+  </Typography>
+  <Typography variant="body2">
+    <Link
+      to="/Courses"
+      style={{ textDecoration: 'none', color: 'black' }} // Style applied here
+    >
+      Courses
+    </Link>
+  </Typography>
           </Grid>
 
           {/* Support Section */}
@@ -105,15 +131,22 @@ const Footer = () => {
               Support
             </Typography>
             <Typography variant="body2">
-              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                Privacy Policy
-              </Link>
-            </Typography>
-            <Typography variant="body2">
-              <Link href="#" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                Terms & Conditions
-              </Link>
-            </Typography>
+  <Link
+    to="#"
+    style={{ textDecoration: 'none', color: 'black' }} // Style applied here
+  >
+    Privacy Policy
+  </Link>
+</Typography>
+<Typography variant="body2">
+  <Link
+    to="#"
+    style={{ textDecoration: 'none', color: 'black' }} // Style applied here
+  >
+    Terms & Conditions
+  </Link>
+</Typography>
+
           </Grid>
 
           {/* Follow Us Section */}
@@ -122,19 +155,41 @@ const Footer = () => {
               Follow Us
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'left', gap: '10px' }}>
-              <Link href="#" sx={{ color: 'inherit' }}>
-                <Facebook />
-              </Link>
-              <Link href="#" sx={{ color: 'inherit' }}>
-                <Instagram />
-              </Link>
-              <Link href="#" sx={{ color: 'inherit' }}>
-                <Twitter />
-              </Link>
-              <Link href="#" sx={{ color: 'inherit' }}>
-                <LinkedIn />
-              </Link>
-            </Box>
+            <Link 
+  to="https://www.facebook.com/" 
+  style={{ color: '#1877F2' }} 
+  target="_blank" 
+  rel="noopener noreferrer" // Prevents potential security risks
+>
+  <Facebook />
+</Link>
+<Link 
+  to="https://www.instagram.com/" 
+  style={{ color: '#E4405F' }} 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <Instagram />
+</Link>
+<Link 
+  to="https://x.com/?lang=en&mx=2" 
+  style={{ color: '#1DA1F2' }} 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <Twitter />
+</Link>
+<Link 
+  to="https://in.linkedin.com/" 
+  style={{ color: '#0077B5' }} 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <LinkedIn />
+</Link>
+
+</Box>
+
           </Grid>
         </Grid>
 

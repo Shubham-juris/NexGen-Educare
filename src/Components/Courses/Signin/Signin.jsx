@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 
 import boxImage from '../../../assets/Courses/SignIn/Box.png';
 import ellipseImage from '../../../assets/Courses/SignIn/Ellipse.png';
+import { Link } from 'react-router-dom';
 
 const SignUpBanner = () => {
   useEffect(() => {
@@ -109,19 +110,21 @@ const SignUpBanner = () => {
               <br />
               Sign up and take the first step toward your goals.
             </Typography>
-            <Button
-              variant='contained'
-              sx={{
-                backgroundColor: '#fff',
-                color: '#FF564F',
-                fontWeight: 'bold',
-                padding: '10px 20px',
-                borderRadius: '50px',
-                textTransform: 'none',
-              }}
-            >
-              Sign up
-            </Button>
+            <Link to="/signup" style={{ textDecoration: 'none' }}> {/* Replace '/signup' with your desired path */}
+      <Button
+        variant="contained"
+        sx={{
+          backgroundColor: '#fff',
+          color: '#FF564F',
+          fontWeight: 'bold',
+          padding: '10px 20px',
+          borderRadius: '50px',
+          textTransform: 'none',
+        }}
+      >
+        Sign up
+      </Button>
+    </Link>
           </Grid>
         </Grid>
       </Box>

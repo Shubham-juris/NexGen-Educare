@@ -18,7 +18,6 @@ import {
 } from "@mui/material";
 
 const TeacherAttandence = () => {
-  // Sample data for the students
   const students = [
     { id: 1, name: "xyz", attendance: [true, true, false, true, true, true, true, true, true, true] },
     { id: 2, name: "Shourve", attendance: [true, true, false, true, true, true, true, true, true, true] },
