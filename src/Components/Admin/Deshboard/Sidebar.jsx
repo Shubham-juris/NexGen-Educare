@@ -31,7 +31,7 @@ import {
   AccountCircle,
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import Logo from '../../../assets/Admin/Logo/logo.png';
+import Logo from '../../../assets/Admin/Sidebarlogo/Logo.webp';
 import StudentAttendance from '../StudentAttandence/StudentAttandence';
 import Library from '../Library/Library';
 import AddCourse from '../Add-Courses/AddCourse';
