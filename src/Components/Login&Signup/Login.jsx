@@ -31,15 +31,25 @@ const Login = ({ onLogin }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const studentId = formData.get('studentId');
+    const userId = formData.get('userId');
     const password = formData.get('password');
 
-    if (studentId === 'admin' && password === 'admin123') {
+    // Check for admin login
+    if (userId === 'admin' && password === 'admin123') {
       setOpenSnackbar(true);
       setLoginError('');
       onLogin(); // Update login state
       setTimeout(() => {
-        navigate('/Sidebar'); // Navigate to Sidebar
+        navigate('/Sidebar'); // Redirect to admin dashboard
+      }, 1000);
+    }
+    // Check for student login
+    else if (userId === 'student' && password === 'vinay123') {
+      setOpenSnackbar(true);
+      setLoginError('');
+      onLogin(); // Update login state
+      setTimeout(() => {
+        navigate('/StudentDeshboard'); // Redirect to student dashboard
       }, 1000);
     } else {
       setLoginError('Invalid credentials. Please try again.');
@@ -88,7 +98,7 @@ const Login = ({ onLogin }) => {
             }}
           >
             <Typography component="h1" variant="h5">
-              Student Login
+              Login
             </Typography>
             <Box
               key={formKey}
@@ -100,10 +110,10 @@ const Login = ({ onLogin }) => {
                 margin="normal"
                 required
                 fullWidth
-                id="studentId"
-                label="Student ID"
-                name="studentId"
-                autoComplete="student-id"
+                id="userId"
+                label="User ID"
+                name="userId"
+                autoComplete="username"
                 autoFocus
               />
               <TextField
@@ -144,18 +154,6 @@ const Login = ({ onLogin }) => {
               >
                 Login
               </Button>
-              <Typography
-                sx={{
-                  mt: 3,
-                  mb: 2,
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  textDecoration: 'underline',
-                  color: 'primary.main',
-                }}
-              >
-                Forgot Password?
-              </Typography>
             </Box>
           </Box>
         </motion.div>

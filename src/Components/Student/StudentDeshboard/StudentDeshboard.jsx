@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -27,6 +27,12 @@ import {
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../../../assets/admin/Logo/logo.png';
+import Courses from '../../Courses/Courses';
+import MockTestCards from '../MockTest/MockTest';
+import MidTerm from '../MidTermExam/MidTerm';
+import FinalExam from '../FinalExam/FinalExam';
+import Result from '../Marks/Result';
+import CoursesCards from '../Courses/Courses';
 
 const StudentDeshboard = () => {
   const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
@@ -91,7 +97,7 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/courses"
+            to="/CoursesCards"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
@@ -115,7 +121,7 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/midterm"
+            to="/MidTerm"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
@@ -127,7 +133,7 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/finalexam"
+            to="/FinalExam"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
@@ -139,13 +145,13 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/marks"
+            to="/Result"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
               <Grade sx={{ color: 'inherit' }} />
             </ListItemIcon>
-            {!isMobile && <ListItemText primary="Marks" />}
+            {!isMobile && <ListItemText primary="Result" />}
           </ListItem>
 
           <ListItem
@@ -232,16 +238,17 @@ const StudentDeshboard = () => {
         </Menu>
 
         {/* Main Content */}
-        <Box
-          sx={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            p: 2,
-          }}
-        >
-          <Typography>Welcome to the Student Dashboard!</Typography>
+        <Box sx={{ flex: 1, p: 2 }}>
+          <Routes>
+            <Route path="/" element={<Typography>Welcome to the Admin Dashboard!</Typography>} />
+            <Route path='/Courses' element={<Courses/>}/>
+            <Route path='/mocktest' element={<MockTestCards/>}/>
+            <Route path='/MidTerm' element={<MidTerm/>}/>
+            <Route path='/FinalExam' element={<FinalExam/>}/>
+            <Route path='/Result' element={<Result/>}/>
+            <Route path='/CoursesCards' element={<CoursesCards/>}/>
+
+          </Routes>
         </Box>
       </Box>
     </Box>

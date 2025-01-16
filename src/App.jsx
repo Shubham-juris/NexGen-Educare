@@ -17,6 +17,7 @@ import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/Hos
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
+import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
 
 function App() {
   // Track login state
@@ -49,6 +50,7 @@ function App() {
         <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
 
       </Routes>
+      {/* <StudentDeshboard/> */}
     </Router>
    );
 }
