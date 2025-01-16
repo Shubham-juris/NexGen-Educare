@@ -17,7 +17,7 @@ import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Logo from '../../assets/LogoImg/logo.webp';
+import Logo from '../../assets/Admin/Logo.png';
 
 // Global Link Style
 const StyledLink = styled(Link)({
