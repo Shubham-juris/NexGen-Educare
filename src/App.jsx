@@ -47,6 +47,7 @@ function App() {
         <Route path='/CompetitiveCoachingCards' element={<CompetitiveCoachingCards />} />
         <Route path='/CoachingClassesCards' element={<CoachingClassesCards />} />
         <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
+
       </Routes>
     </Router>
   );
