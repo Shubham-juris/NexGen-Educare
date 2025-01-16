@@ -26,7 +26,7 @@ import {
   Message,
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import Logo from '../../../assets/Admin/Logo/logo.png';
+import Logo from '../../../assets/Student/Logo.webp';
 import Courses from '../../Courses/Courses';
 import MockTestCards from '../MockTest/MockTest';
 import MidTerm from '../MidTermExam/MidTerm';
