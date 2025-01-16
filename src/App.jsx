@@ -19,6 +19,9 @@ import HeroSection from './Components/Hero/HeroSection';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
 
+import StudentAttendanceView from './Components/Student/Attendance/Attendance';
+import FeeDetails from './Components/Student/Fee/Fee';
+
 function App() {
   // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,7 +51,8 @@ function App() {
         <Route path='/CompetitiveCoachingCards' element={<CompetitiveCoachingCards />} />
         <Route path='/CoachingClassesCards' element={<CoachingClassesCards />} />
         <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
-
+        <Route path='/FeeDetails' element={<FeeDetails />} />
+        <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} />
       </Routes>
       {/* <StudentDeshboard/> */}
     </Router>
