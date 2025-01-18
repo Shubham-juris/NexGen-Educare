@@ -65,19 +65,40 @@ const ContactUs = () => {
               margin: '0 auto',
               width: { xs: '295px', sm: '360px' },
             }}
-          >
+          ><a
+          href="https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
             <LocationOnIcon
               fontSize='large'
               sx={{ color: 'primary.main', marginBottom: 1 }}
             />
+            </a>
+            <a
+                href="https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
             <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
               OUR MAIN OFFICE
             </Typography>
+            </a>
             <Typography align='center'>
-              SCO 4-5, Second Floor, New Sunny <br />
-              Enclave, Sector-125, Mohali, Kharar
+              <a
+                href="https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                SCO 4-5, Second Floor, New Sunny <br />
+                Enclave, Sector-125, Mohali, Kharar
+                <br />
+                Punjab - 140301
+              </a>
             </Typography>
-            <Typography align='center'>Punjab - 140301</Typography>
           </Card>
         </Grid>
 
@@ -95,19 +116,29 @@ const ContactUs = () => {
               width: { xs: '295px', sm: '360px' },
             }}
           >
+            < a href="tel:+919115177792" style={{ textDecoration: 'none', color: 'inherit' }}>
             <PhoneIcon
               fontSize='large'
               sx={{ color: 'primary.main', marginBottom: 1 }}
             />
+            </a>
+            < a href="tel:+919115177792" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
               PHONE NUMBER
+            </Typography></a>
+            <Typography align='center'>
+              <a
+                href="tel:+919115177792"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                +91 91151 77792
+              </a>
             </Typography>
-            <Typography align='center'>+91 91151 77792</Typography>
           </Card>
         </Grid>
 
         {/* Card 3: Email */}
-        <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
+        <Grid item xs={12} sm={6} md={4} data-aos="fade-up">
           <Card
             sx={{
               display: 'flex',
@@ -120,15 +151,30 @@ const ContactUs = () => {
               width: { xs: '295px', sm: '360px' },
             }}
           >
-            <EmailIcon
-              fontSize='large'
-              sx={{ color: 'primary.main', marginBottom: 1 }}
-            />
-            <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
-              EMAIL
-            </Typography>
-            <Typography align='center'>
-              nexgeneducareacademy@gmail.com
+            <a
+              href="mailto:nexgeneducareacademy@gmail.com"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <EmailIcon
+                fontSize="large"
+                sx={{ color: 'primary.main', marginBottom: 1 }}
+              />
+            </a>
+            <a
+              href="mailto:nexgeneducareacademy@gmail.com"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <Typography variant="h6" align="center" sx={{ marginTop: 1 }}>
+                EMAIL
+              </Typography>
+            </a>
+            <Typography align="center">
+              <a
+                href="mailto:nexgeneducareacademy@gmail.com"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                nexgeneducareacademy@gmail.com
+              </a>
             </Typography>
           </Card>
         </Grid>
@@ -208,7 +254,7 @@ const ContactUs = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              width: {xs:'270px', sm:'300px', md:'450px'},             
+              width: { xs: '270px', sm: '300px', md: '450px' },
               margin: '0 auto',
             }}
             noValidate
