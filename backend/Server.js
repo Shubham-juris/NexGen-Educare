@@ -45,9 +45,16 @@ app.post('/signup', (req, res) => {
   })
 })
 
-// Root route
+// Root route linked with the database
 app.get('/', (req, res) => {
-  res.status(200).send('Hello World')
+  const sql = `SELECT * FROM signup` // Fetch all rows from the signup table
+  connection.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err)
+      return res.status(500).json({ message: 'Database error.' })
+    }
+    res.status(200).json(results) // Send the fetched data as JSON
+  })
 })
 
 // Define the port
