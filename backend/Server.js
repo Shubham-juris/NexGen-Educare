@@ -1,7 +1,10 @@
+// Import required modules
 const express = require('express')
 const mysql = require('mysql2')
-const app = express()
 const cors = require('cors')
+
+// Create an Express application
+const app = express()
 
 // Middleware
 app.use(express.json()) // To parse JSON requests
@@ -17,8 +20,8 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error('Connection failed:', err)
-    return
+    console.error('Database connection failed:', err.message)
+    process.exit(1) // Exit the process if the database connection fails
   }
   console.log('Connected to the database.')
 })
@@ -38,12 +41,19 @@ app.post('/signup', (req, res) => {
       console.error('Error inserting data:', err)
       return res.status(500).json({ message: 'Database error.' })
     }
-    res.status(200).json({ message: 'Signup successful!' })
+    res.status(201).json({ message: 'Signup successful!' })
   })
 })
 
-// Start server
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).send('Hello World')
+})
+
+// Define the port
 const PORT = process.env.PORT || 3000
+
+// Start the Express server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
