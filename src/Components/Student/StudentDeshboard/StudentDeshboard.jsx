@@ -66,10 +66,8 @@ const StudentDeshboard = () => {
           color: '#fff',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
           transition: 'width 0.3s ease',
           height: '100vh',
-          paddingTop: '16px',
         }}
       >
         {/* Logo Section */}
@@ -97,7 +95,7 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/CoursesCards"
+            to="/Courses"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
@@ -194,37 +192,41 @@ const StudentDeshboard = () => {
       >
         {/* Top Bar */}
         <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            mb: 7,
-            p: 2,
-          }}
-        >
-          <Typography variant='h6'>Student Dashboard</Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <InputBase
-              placeholder='Search...'
-              sx={{
-                bgcolor: '#FFF',
-                px: 2,
-                py: 1,
-                borderRadius: 1,
-                width: '200px',
-              }}
-            />
-            <IconButton component={Link} to="/notifications">
-              <Notifications />
-            </IconButton>
-            <IconButton component={Link} to="/messages">
-              <Message />
-            </IconButton>
-            <IconButton onClick={handleProfileMenuOpen}>
-              <AccountCircle />
-            </IconButton>
-          </Box>
-        </Box>
+  sx={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    mb: 7,
+    p: 2,
+    position: 'sticky',  // Make the box sticky
+    top: 0,              // Stick to the top of the page
+    zIndex: 1000,        // Ensure it stays above other content
+    backgroundColor: 'white',  // Add a background to avoid overlapping with content below
+  }}
+>
+  <Typography variant='h6'>Student Dashboard</Typography>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+    <InputBase
+      placeholder='Search...'
+      sx={{
+        bgcolor: '#FFF',
+        px: 2,
+        py: 1,
+        borderRadius: 1,
+        width: '200px',
+      }}
+    />
+    <IconButton component={Link} to="/notifications">
+      <Notifications />
+    </IconButton>
+    <IconButton component={Link} to="/messages">
+      <Message />
+    </IconButton>
+    <IconButton onClick={handleProfileMenuOpen}>
+      <AccountCircle />
+    </IconButton>
+  </Box>
+</Box>
 
         {/* Profile Menu */}
         <Menu

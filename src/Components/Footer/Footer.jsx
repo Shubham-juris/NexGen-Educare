@@ -140,7 +140,7 @@ const Footer = () => {
 </Typography>
 <Typography variant="body2">
   <Link
-    to="#"
+    to="/Sdashboard"
     style={{ textDecoration: 'none', color: 'black' }} // Style applied here
   >
     Terms & Conditions

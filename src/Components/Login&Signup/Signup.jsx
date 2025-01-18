@@ -34,29 +34,47 @@ const Signup = () => {
     localStorage.setItem('signupFormData', JSON.stringify(formData));
   }, [formData]);
 
+  // Handle input field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send data to backend API
-      const response = await axios.post('http://localhost:3000/signup', formData);
-      
-      // On success, clear the form and local storage
+      const response = await axios.post(
+        'https://6f21-49-156-76-189.ngrok-free.app/',
+        formData,
+        {
+          headers: {
+            'ngrok-skip-browser-warning': '69420',
+          },
+        }
+      );
       setSuccessMessage('Signup successful! Data saved to database.');
       setErrorMessage('');
       setFormData({ fname: '', lname: '', email: '', password: '' });
-      localStorage.removeItem('signupFormData'); // Clear local storage
+      localStorage.removeItem('signupFormData');
     } catch (error) {
-      console.error('Error signing up:', error);
-      setErrorMessage('Signup failed. Please try again.');
+      console.error('Error signing up:', error.message);
+      if (error.response) {
+        console.error('Server Response:', error.response.data);
+        setErrorMessage(`Signup failed: ${error.response.data.message || 'Please try again.'}`);
+      } else if (error.request) {
+        console.error('No Response from Server:', error.request);
+        setErrorMessage('Signup failed: No response from server.');
+      } else {
+        console.error('Request Error:', error.message);
+        setErrorMessage('Signup failed: Request could not be made.');
+      }
       setSuccessMessage('');
     }
   };
-
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

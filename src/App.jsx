@@ -28,10 +28,8 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-
-      {/* Conditionally render Sidebar based on login state */}
-      {isLoggedIn && <Sidebar />}
+      {/* Conditionally render Navbar or Sidebar */}
+      {isLoggedIn ? <Sidebar /> : <Navbar />}
 
       <Routes>
         {/* Define Routes for different paths */}
@@ -53,10 +51,10 @@ function App() {
         <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
         <Route path='/FeeDetails' element={<FeeDetails />} />
         <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} />
+        <Route path='/Sdashboard' element={<StudentDeshboard/>}/>
       </Routes>
-      {/* <StudentDeshboard/> */}
     </Router>
-   );
+  );
 }
 
 export default App;
