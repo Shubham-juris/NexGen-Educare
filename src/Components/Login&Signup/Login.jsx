@@ -28,31 +28,33 @@ const Login = ({ onLogin }) => {
     AOS.init({ duration: 2000 });
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const userId = formData.get('userId');
+    const enrollmentId = formData.get('userId');
     const password = formData.get('password');
 
-    // Check for admin login
-    if (userId === 'admin' && password === 'admin123') {
-      setOpenSnackbar(true);
-      setLoginError('');
-      onLogin(); // Update login state
-      setTimeout(() => {
-        navigate('/Sidebar'); // Redirect to admin dashboard
-      }, 1000);
-    }
-    // Check for student login
-    else if (userId === 'student' && password === 'vinay123') {
-      setOpenSnackbar(true);
-      setLoginError('');
-      onLogin(); // Update login state
-      setTimeout(() => {
-        navigate('/StudentDeshboard'); // Redirect to student dashboard
-      }, 1000);
-    } else {
-      setLoginError('Invalid credentials. Please try again.');
+    try {
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enrollmentId, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setOpenSnackbar(true);
+        setLoginError('');
+        onLogin(data.user); // Update login state with user data
+        setTimeout(() => {
+          navigate('/Sdashboard'); // Redirect to student dashboard
+        }, 1000);
+      } else {
+        const errorData = await response.json();
+        setLoginError(errorData.message || 'Invalid credentials');
+      }
+    } catch (error) {
+      setLoginError('Something went wrong. Please try again.');
     }
 
     setFormKey((prevKey) => prevKey + 1);
@@ -111,7 +113,7 @@ const Login = ({ onLogin }) => {
                 required
                 fullWidth
                 id="userId"
-                label="User ID"
+                label="Enrollment ID"
                 name="userId"
                 autoComplete="username"
                 autoFocus

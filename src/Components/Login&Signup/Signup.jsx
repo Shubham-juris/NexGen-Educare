@@ -5,36 +5,27 @@ import {
   Button,
   Typography,
   Container,
-  CssBaseline,
-  Alert,
 } from '@mui/material';
-import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    fname: '',
-    lname: '',
-    email: '',
-    password: '',
-  });
-
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  // Load form data from local storage on component mount
   useEffect(() => {
-    const savedFormData = JSON.parse(localStorage.getItem('signupFormData'));
-    if (savedFormData) {
-      setFormData(savedFormData);
-    }
+    AOS.init({ duration: 1000 });
   }, []);
 
-  // Save form data to local storage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('signupFormData', JSON.stringify(formData));
-  }, [formData]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  // Handle input field changes
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -45,105 +36,132 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic validation
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      toast.error('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      const response = await axios.post(
-        'https://6f21-49-156-76-189.ngrok-free.app/',
-        formData,
-        {
-          headers: {
-            'ngrok-skip-browser-warning': '69420',
-          },
-        }
-      );
-      setSuccessMessage('Signup successful! Data saved to database.');
-      setErrorMessage('');
-      setFormData({ fname: '', lname: '', email: '', password: '' });
-      localStorage.removeItem('signupFormData');
-    } catch (error) {
-      console.error('Error signing up:', error.message);
-      if (error.response) {
-        console.error('Server Response:', error.response.data);
-        setErrorMessage(`Signup failed: ${error.response.data.message || 'Please try again.'}`);
-      } else if (error.request) {
-        console.error('No Response from Server:', error.request);
-        setErrorMessage('Signup failed: No response from server.');
-      } else {
-        console.error('Request Error:', error.message);
-        setErrorMessage('Signup failed: Request could not be made.');
+      const response = await fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Signup failed');
       }
-      setSuccessMessage('');
+
+      const data = await response.json();
+      toast.success(`Signup successful! Your Enrollment ID: ${data.enrollmentId}`);
+
+      // Clear form fields
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: '',
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error(error.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
-  
+
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    <Container
+      maxWidth="sm"
+      sx={{
+        marginTop: 4,
+        padding: 4,
+        boxShadow: 3,
+        borderRadius: 2,
+        backgroundColor: '#fff',
+        textAlign: 'center',
+      }}
+      data-aos="fade-up"
+    >
+      <Typography variant="h4" gutterBottom>
+        Signup
+      </Typography>
       <Box
+        component="form"
+        onSubmit={handleSubmit}
         sx={{
-          marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          gap: 2,
         }}
       >
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-        {successMessage && <Alert severity="success">{successMessage}</Alert>}
-        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <TextField
-            name="fname"
-            label="First Name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            required
-            value={formData.fname}
-            onChange={handleChange}
-          />
-          <TextField
-            name="lname"
-            label="Last Name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            required
-            value={formData.lname}
-            onChange={handleChange}
-          />
-          <TextField
-            name="email"
-            label="Email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            required
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <TextField
-            name="password"
-            label="Password"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            required
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 2, mb: 2 }}
-          >
-            Save and Submit
-          </Button>
-        </Box>
+        <TextField
+          label="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Phone Number"
+          name="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={loading}
+        >
+          {loading ? 'Signing Up...' : 'Sign Up'}
+        </Button>
       </Box>
+      <ToastContainer />
     </Container>
   );
 };

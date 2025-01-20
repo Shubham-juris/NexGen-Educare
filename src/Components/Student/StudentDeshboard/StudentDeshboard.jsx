@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import {
@@ -33,6 +32,8 @@ import MidTerm from '../MidTermExam/MidTerm';
 import FinalExam from '../FinalExam/FinalExam';
 import Result from '../Marks/Result';
 import CoursesCards from '../Courses/Courses';
+import StudentAttendanceView from '../Attendance/Attendance';
+import FeeDetails from '../Fee/Fee';
 
 const StudentDeshboard = () => {
   const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
@@ -242,13 +243,15 @@ const StudentDeshboard = () => {
         {/* Main Content */}
         <Box sx={{ flex: 1, p: 2 }}>
           <Routes>
-            <Route path="/" element={<Typography>Welcome to the Admin Dashboard!</Typography>} />
+            <Route path="/" element={<Typography>Welcome to the Student Dashboard!</Typography>} />
             <Route path='/Courses' element={<Courses/>}/>
             <Route path='/mocktest' element={<MockTestCards/>}/>
             <Route path='/MidTerm' element={<MidTerm/>}/>
             <Route path='/FinalExam' element={<FinalExam/>}/>
             <Route path='/Result' element={<Result/>}/>
             <Route path='/CoursesCards' element={<CoursesCards/>}/>
+            <Route path='/attendance' element={<StudentAttendanceView/>}/>
+            <Route path='/fee' element={<FeeDetails/>}/>
 
           </Routes>
         </Box>
