@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Courses from './Components/Courses/Courses';
 import Footer from './Components/Footer/Footer';
 import ContactUs from './Components/Contact-Us/Contact';
@@ -18,9 +18,8 @@ import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
-
-import StudentAttendanceView from './Components/Student/Attendance/Attendance';
-import FeeDetails from './Components/Student/Fee/Fee';
+// import StudentAttendanceView from './Components/Student/Attendance/Attendance';
+// import FeeDetails from './Components/Student/Fee/Fee';
 
 function App() {
   // Track login state
@@ -36,8 +35,11 @@ function App() {
         <Route path='/' element={<><HeroSection /><Footer /></>} />
         <Route path='/Courses' element={<><Courses /><Footer /></>} />
         <Route path='/contactus' element={<><ContactUs /><Footer /></>} />
-        <Route path='/login' element={<><Login onLogin={() => setIsLoggedIn(true)} /></>} />
-        <Route path='/signup' element={<><Signup /></>} />
+        <Route
+          path='/login'
+          element={ <><Login onLogin={() => setIsLoggedIn(true)} /> </> }
+        />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/aboutUs' element={<><AboutUs /><Footer /></>} />
 
         {/* Courses routes */}
@@ -49,9 +51,16 @@ function App() {
         <Route path='/CompetitiveCoachingCards' element={<CompetitiveCoachingCards />} />
         <Route path='/CoachingClassesCards' element={<CoachingClassesCards />} />
         <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
-        <Route path='/FeeDetails' element={<FeeDetails />} />
-        <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} />
-        <Route path='/Sdashboard' element={<StudentDeshboard/>}/>
+        {/* <Route path='/FeeDetails' element={<FeeDetails />} />
+        <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} /> */}
+
+        {/* Protected Route for Student Dashboard */}
+        <Route
+          path='/Sdashboard'
+          element={
+            isLoggedIn ? <StudentDeshboard /> : <Navigate to='/login' replace />
+          }
+        />
       </Routes>
     </Router>
   );

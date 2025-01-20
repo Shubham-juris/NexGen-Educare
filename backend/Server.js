@@ -7,8 +7,8 @@ const cors = require('cors')
 const app = express()
 
 // Middleware
-app.use(express.json()) // To parse JSON requests
-app.use(cors()) // Allow cross-origin requests from frontend
+app.use(express.json())
+app.use(cors())
 
 // MySQL database connection
 const connection = mysql.createConnection({
@@ -21,46 +21,61 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) {
     console.error('Database connection failed:', err.message)
-    process.exit(1) // Exit the process if the database connection fails
+    process.exit(1)
   }
   console.log('Connected to the database.')
 })
 
-// Signup API route
-app.post('/signup', (req, res) => {
-  const { fname, lname, email, password } = req.body
+// Example backend (Node.js with Express)
+let enrollmentCounter = 0 // Store the counter on the server
 
-  if (!fname || !lname || !email || !password) {
-    return res.status(400).json({ message: 'All fields are required.' })
-  }
+// Endpoint for user signup
+app.post('/api/signup', async (req, res) => {
+  const { name, email, phone, password } = req.body
 
-  // SQL query to insert data into the database
-  const sql = `INSERT INTO signup (fname, lname, email, password) VALUES (?, ?, ?, ?)`
-  connection.query(sql, [fname, lname, email, password], (err, results) => {
+  // Generate a new enrollment ID by incrementing the counter
+  const enrollmentId = `NG251100${enrollmentCounter + 1}`
+  enrollmentCounter++ // Increment the counter after generating the ID
+
+  // Save the user details to the database
+  const sql = `INSERT INTO signup (name, email, phone, password, enrollmentId) VALUES (?, ?, ?, ?, ?)`
+  connection.query(sql, [name, email, phone, password, enrollmentId], (err) => {
     if (err) {
       console.error('Error inserting data:', err)
       return res.status(500).json({ message: 'Database error.' })
     }
-    res.status(201).json({ message: 'Signup successful!' })
+    res.status(200).json({ message: 'Signup successful!', enrollmentId })
   })
 })
 
-// Root route linked with the database
-app.get('/', (req, res) => {
-  const sql = `SELECT * FROM signup` // Fetch all rows from the signup table
-  connection.query(sql, (err, results) => {
+// Login API route
+app.post('/api/login', (req, res) => {
+  const { enrollmentId, password } = req.body
+
+  if (!enrollmentId || !password) {
+    return res
+      .status(400)
+      .json({ message: 'Enrollment ID and password are required' })
+  }
+
+  const sql = `SELECT * FROM signup WHERE enrollmentId = ? AND password = ?`
+  connection.query(sql, [enrollmentId, password], (err, results) => {
     if (err) {
-      console.error('Error fetching data:', err)
+      console.error('Error querying database:', err)
       return res.status(500).json({ message: 'Database error.' })
     }
-    res.status(200).json(results) // Send the fetched data as JSON
+
+    if (results.length > 0) {
+      res.status(200).json({ message: 'Login successful', user: results[0] })
+    } else {
+      res.status(401).json({ message: 'Invalid Enrollment ID or password' })
+    }
   })
 })
 
 // Define the port
 const PORT = process.env.PORT || 3000
 
-// Start the Express server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
