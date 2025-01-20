@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Typography,
@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid2';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import emailjs from 'emailjs-com';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from '../../assets/Contact-Us/Contact.jpg';
@@ -19,6 +20,44 @@ const ContactUs = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    course: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Replace these with your EmailJS service, template, and user IDs
+    const serviceId = 'service_pki17gg';
+    const templateId = 'template_0qfjd5j';
+    const userId = 'FROpYta0fqq18rCgt';
+
+    emailjs
+      .send(serviceId, templateId, formData, userId)
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Message sent successfully!');
+          setFormData({ name: '', email: '', course: '', message: '' }); // Reset form
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          alert('Message sending failed. Please try again.');
+        }
+      );
+  };
 
   return (
     <Box
@@ -237,60 +276,91 @@ const ContactUs = () => {
         </Grid>
 
         {/* Right Side: Contact Form */}
-        <Grid item xs={12} md={6} data-aos='fade-left'>
-          <Typography
-            variant='h5'
-            gutterBottom
-            sx={{
-              textAlign: 'center',
-              marginBottom: 2,
-            }}
-          >
-            Get in touch
-          </Typography>
-          <Box
-            component='form'
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-              width: { xs: '270px', sm: '300px', md: '450px' },
-              margin: '0 auto',
-            }}
-            noValidate
-            autoComplete='off'
-          >
-            <TextField label='Name' fullWidth />
-            <TextField label='Email' type='email' fullWidth />
-            <TextField
-              label='Courses'
-              select
-              fullWidth
-              SelectProps={{
-                MenuProps: {
-                  sx: {
-                    '& .MuiPaper-root': {
-                      maxHeight: 150,
-                    },
-                  },
+        <Grid item xs={12} md={6} data-aos="fade-left">
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{
+          textAlign: 'center',
+          marginBottom: 2,
+        }}
+      >
+        Get in touch
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          width: { xs: '270px', sm: '300px', md: '450px' },
+          margin: '0 auto',
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          label="Name"
+              name="name"
+              type='text'
+          value={formData.name}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          fullWidth
+          required
+        />
+        <TextField
+          label="Courses"
+          name="course"
+          value={formData.course}
+          onChange={handleChange}
+          select
+          fullWidth
+          required
+          SelectProps={{
+            MenuProps: {
+              sx: {
+                '& .MuiPaper-root': {
+                  maxHeight: 150,
                 },
-              }}
-            >
-              <MenuItem value='Course 1'>Web Technologies Courses</MenuItem>
-              <MenuItem value='Course 2'>Accounts Courses</MenuItem>
-              <MenuItem value='Course 3'>Monograph Courses</MenuItem>
-              <MenuItem value='Course 4'>Languages Courses</MenuItem>
-              <MenuItem value='Course 5'>Hospitalist Courses</MenuItem>
-              <MenuItem value='Course 6'>Competitive Courses</MenuItem>
-              <MenuItem value='Course 7'>Coaching Courses</MenuItem>
-              <MenuItem value='Course 8'>Cooking Courses</MenuItem>
-            </TextField>
-            <TextField label='Message' multiline rows={4} fullWidth />
-            <Button variant='contained' type='submit' fullWidth>
-              SUBMIT
-            </Button>
-          </Box>
-        </Grid>
+              },
+            },
+          }}
+        >
+          <MenuItem value="Web Technologies Courses">Web Technologies Courses</MenuItem>
+          <MenuItem value="Accounts Courses">Accounts Courses</MenuItem>
+          <MenuItem value="Monograph Courses">Monograph Courses</MenuItem>
+          <MenuItem value="Languages Courses">Languages Courses</MenuItem>
+          <MenuItem value="Hospitalist Courses">Hospitalist Courses</MenuItem>
+          <MenuItem value="Competitive Courses">Competitive Courses</MenuItem>
+          <MenuItem value="Coaching Courses">Coaching Courses</MenuItem>
+          <MenuItem value="Cooking Courses">Cooking Courses</MenuItem>
+        </TextField>
+        <TextField
+          label="Message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          multiline
+          rows={4}
+          fullWidth
+          required
+        />
+        <Button variant="contained" type="submit" fullWidth>
+          SUBMIT
+        </Button>
+      </Box>
+    </Grid>
+  
       </Grid>
     </Box>
   );
