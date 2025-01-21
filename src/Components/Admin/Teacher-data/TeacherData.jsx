@@ -14,7 +14,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-
+ 
 const TeacherData = () => {
   const rows = [
     { id: "#01", name: "xyz", gender: "Male", course: "Web Dev" },
@@ -22,7 +22,7 @@ const TeacherData = () => {
     { id: "#01", name: "Annita", gender: "Female", course: "Web Dev" },
     { id: "#02", name: "Panda", gender: "Female", course: "App Dev" },
   ];
-
+ 
   return (
     <Container>
       <Box my={4}>
@@ -72,5 +72,7 @@ const TeacherData = () => {
     </Container>
   );
 };
-
+ 
 export default TeacherData;
+ 
+ 
