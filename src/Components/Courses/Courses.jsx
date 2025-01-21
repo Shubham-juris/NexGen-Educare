@@ -122,7 +122,7 @@ const Courses = () => {
               />
               <CardContent>
                 <Typography variant='h6' component='div'>
-                  Comprehensive Career Courses
+                  Comprehensive Courses
                 </Typography>
               </CardContent>
             </Card>
