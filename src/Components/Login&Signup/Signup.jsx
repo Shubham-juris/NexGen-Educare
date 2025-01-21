@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  Container,
-} from '@mui/material';
+import { Box, TextField, Button, Typography, Container } from '@mui/material';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -65,7 +59,9 @@ const Signup = () => {
       }
 
       const data = await response.json();
-      toast.success(`Signup successful! Your Enrollment ID: ${data.enrollmentId}`);
+      toast.success(
+        `Signup successful! Your Enrollment ID: ${data.enrollmentId}`
+      );
 
       // Clear form fields
       setFormData({
@@ -85,7 +81,7 @@ const Signup = () => {
 
   return (
     <Container
-      maxWidth="sm"
+      maxWidth='sm'
       sx={{
         marginTop: 4,
         padding: 4,
@@ -94,13 +90,13 @@ const Signup = () => {
         backgroundColor: '#fff',
         textAlign: 'center',
       }}
-      data-aos="fade-up"
+      data-aos='fade-up'
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography variant='h4' gutterBottom>
         Signup
       </Typography>
       <Box
-        component="form"
+        component='form'
         onSubmit={handleSubmit}
         sx={{
           display: 'flex',
@@ -109,53 +105,53 @@ const Signup = () => {
         }}
       >
         <TextField
-          label="Name"
-          name="name"
+          label='Name'
+          name='name'
           value={formData.name}
           onChange={handleChange}
           fullWidth
           required
         />
         <TextField
-          label="Email"
-          name="email"
-          type="email"
+          label='Email'
+          name='email'
+          type='email'
           value={formData.email}
           onChange={handleChange}
           fullWidth
           required
         />
         <TextField
-          label="Phone Number"
-          name="phone"
-          type="tel"
+          label='Phone Number'
+          name='phone'
+          type='tel'
           value={formData.phone}
           onChange={handleChange}
           fullWidth
           required
         />
         <TextField
-          label="Password"
-          name="password"
-          type="password"
+          label='Password'
+          name='password'
+          type='password'
           value={formData.password}
           onChange={handleChange}
           fullWidth
           required
         />
         <TextField
-          label="Confirm Password"
-          name="confirmPassword"
-          type="password"
+          label='Confirm Password'
+          name='confirmPassword'
+          type='password'
           value={formData.confirmPassword}
           onChange={handleChange}
           fullWidth
           required
         />
         <Button
-          type="submit"
-          variant="contained"
-          color="primary"
+          type='submit'
+          variant='contained'
+          color='primary'
           disabled={loading}
         >
           {loading ? 'Signing Up...' : 'Sign Up'}

@@ -111,7 +111,7 @@ const Navbar = () => {
                 <img
                   src={Logo}
                   alt='Logo'
-                  style={{ height: '40px', width: 'auto', cursor: 'pointer' }}
+                  style={{ height: '50px', width: 'auto', cursor: 'pointer' }}
                 />
               </StyledLink>
               <Box

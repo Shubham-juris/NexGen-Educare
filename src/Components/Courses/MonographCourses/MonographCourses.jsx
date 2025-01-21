@@ -1,6 +1,12 @@
 import React from 'react';
 import Grid from '@mui/material/Grid2';
-import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+} from '@mui/material';
 
 import RealEstate from '../../../assets/Courses/MonographCourses/Real-Estate.png';
 import DispatchCourse from '../../../assets/Courses/MonographCourses/Dispatch-Course.png';
@@ -16,7 +22,7 @@ const cardsData = [
   { id: 3, title: 'Dental Receptionist', image: DentalReceptionist },
   { id: 4, title: 'Security Training', image: SecurityTraining },
   { id: 5, title: 'Sales Training', image: SalesTraining },
-  { id: 6, title: 'Food Hendler', image: FoodHendler },
+  { id: 6, title: 'Food Handler', image: FoodHendler },
   { id: 7, title: 'Event Planning', image: EventPlanning },
 ];
 

@@ -25,11 +25,11 @@ const Courses = () => {
             textAlign: 'center',
             marginTop: '20px',
             marginBottom: '20px',
-            color: red[500], 
-            backgroundImage:` url(${Background})`,            
+            color: red[500],
+            backgroundImage: ` url(${Background})`,
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat', 
-            padding: '20px', 
+            backgroundRepeat: 'no-repeat',
+            padding: '20px',
             fontWeight: 'bold',
           }}
         >
@@ -122,7 +122,7 @@ const Courses = () => {
               />
               <CardContent>
                 <Typography variant='h6' component='div'>
-                  Monograph Courses
+                  Comprehensive Career Courses
                 </Typography>
               </CardContent>
             </Card>
@@ -160,7 +160,10 @@ const Courses = () => {
 
         {/* Card 5 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <Link to='/HospitalistCoursesCards' style={{ textDecoration: 'none' }}>
+          <Link
+            to='/HospitalistCoursesCards'
+            style={{ textDecoration: 'none' }}
+          >
             <Card
               sx={{
                 display: 'flex',
@@ -189,7 +192,10 @@ const Courses = () => {
 
         {/* Card 6 */}
         <Grid item xs={12} sm={6} md={3} lg={2}>
-          <Link to='/CompetitiveCoachingCards' style={{ textDecoration: 'none' }}>
+          <Link
+            to='/CompetitiveCoachingCards'
+            style={{ textDecoration: 'none' }}
+          >
             <Card
               sx={{
                 display: 'flex',
@@ -274,7 +280,7 @@ const Courses = () => {
           </Link>
         </Grid>
       </Grid>
-      <SignUpBanner/>
+      <SignUpBanner />
     </Box>
   );
 };
