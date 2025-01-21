@@ -1,4 +1,3 @@
-// Library.js
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -18,24 +17,22 @@ import {
   DialogContent,
   DialogTitle,
   Alert,
-  IconButton,
 } from "@mui/material";
-import { Delete, Edit, Visibility } from "@mui/icons-material";
 
 const Library = () => {
   const [courses, setCourses] = useState([]);
   const [open, setOpen] = useState(false);
-  const [viewerOpen, setViewerOpen] = useState(false);
-  const [fileToView, setFileToView] = useState(null);
   const [newCourse, setNewCourse] = useState({
     name: "",
     code: "",
     file: null,
     image: null,
+    parentCourseId: null,
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
 
+  // Fetch all courses from the backend
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -51,9 +48,11 @@ const Library = () => {
     fetchCourses();
   }, []);
 
+  // Open and close dialog
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
     setNewCourse((prev) => ({
@@ -62,6 +61,7 @@ const Library = () => {
     }));
   };
 
+  // Submit the form data to the backend
   const handleSubmit = async () => {
     if (!newCourse.name || !newCourse.code) {
       setError("Course name and code are required.");
@@ -75,24 +75,48 @@ const Library = () => {
     if (newCourse.image) formData.append("image", newCourse.image);
 
     try {
-      const response = await fetch("http://localhost:3000/api/courses", {
-        method: "POST",
-        body: formData,
-      });
+      // If adding a sub-course
+      if (newCourse.parentCourseId) {
+        const subCourse = {
+          name: newCourse.name,
+          code: newCourse.code,
+          file: newCourse.file,
+          image: newCourse.image,
+        };
 
-      if (response.ok) {
-        const newCourseFromServer = await response.json();
-        setCourses((prev) => [...prev, newCourseFromServer]);
-        handleClose();
-        setError("");
+        setCourses((prev) =>
+          prev.map((course) =>
+            course.id === newCourse.parentCourseId
+              ? {
+                  ...course,
+                  subCourses: [...course.subCourses, subCourse],
+                }
+              : course
+          )
+        );
       } else {
-        setError("Failed to add course. Please try again.");
+        // If adding a new course
+        const response = await fetch("http://localhost:3000/api/courses", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          const newCourseFromServer = await response.json();
+          setCourses((prev) => [...prev, newCourseFromServer]);
+        } else {
+          setError("Failed to add course. Please try again.");
+        }
       }
+
+      handleClose();
+      setError("");
     } catch (error) {
       setError("An error occurred while adding the course.");
     }
   };
 
+  // Handle delete
   const handleDelete = async (id) => {
     try {
       const response = await fetch(`http://localhost:3000/api/courses/${id}`, {
@@ -109,9 +133,19 @@ const Library = () => {
     }
   };
 
-  const handleViewCourse = (filePath) => {
-    setFileToView(filePath);
-    setViewerOpen(true);
+  // Handle add sub-course
+  const handleSubCourse = (courseId) => {
+    const course = courses.find((course) => course.id === courseId);
+    if (course) {
+      setNewCourse({
+        name: "",
+        code: "",
+        file: null,
+        image: null,
+        parentCourseId: courseId, // Store the parent course ID for sub-course
+      });
+      handleOpen();
+    }
   };
 
   return (
@@ -144,8 +178,7 @@ const Library = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Sr.No</TableCell>
-              <TableCell>Image</TableCell>
+              <TableCell>ID</TableCell>
               <TableCell>Course Name</TableCell>
               <TableCell>Course Code</TableCell>
               <TableCell>Actions</TableCell>
@@ -157,70 +190,69 @@ const Library = () => {
                 course.name.toLowerCase().includes(searchQuery.toLowerCase())
               )
               .map((course, index) => (
-                <TableRow key={index}>
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>
-                    {course.image && (
-                      <img
-                        src={`http://localhost:3000${course.image}`}
-                        alt="Course"
-                        style={{ width: 50, height: 50, objectFit: "cover" }}
-                      />
-                    )}
-                  </TableCell>
-                  <TableCell>{course.name}</TableCell>
-                  <TableCell>{course.code}</TableCell>
-                  <TableCell>
-                    <IconButton
-                      color="primary"
-                      onClick={() => handleViewCourse(course.file)}
-                    >
-                      <Visibility />
-                    </IconButton>
-                    <IconButton color="secondary" aria-label="edit course">
-                      <Edit />
-                    </IconButton>
-                    <IconButton
-                      color="error"
-                      aria-label="delete course"
-                      onClick={() => handleDelete(course.id)}
-                    >
-                      <Delete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
+                <React.Fragment key={index}>
+                  <TableRow>
+                    <TableCell>{course.id}</TableCell>
+                    <TableCell>{course.name}</TableCell>
+                    <TableCell>{course.code}</TableCell>
+                    <TableCell>
+                      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                        <Button
+                          variant="contained"
+                          color="error"
+                          sx={{ mr: 1 }}
+                          onClick={() => handleDelete(course.id)}
+                        >
+                          Delete
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleSubCourse(course.id)}
+                        >
+                          Add Sub-Course
+                        </Button>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+
+                  {/* Sub-Courses */}
+                  {course.subCourses?.map((subCourse, subIndex) => (
+                    <TableRow key={`sub-course-${subIndex}`}>
+                      <TableCell>{subIndex + 1}</TableCell>
+                      <TableCell>{subCourse.name}</TableCell>
+                      <TableCell>{subCourse.code}</TableCell>
+                      <TableCell>
+                        {subCourse.file && (
+                          <a href={URL.createObjectURL(subCourse.file)}>
+                            File
+                          </a>
+                        )}
+                        {subCourse.image && (
+                          <img
+                            src={URL.createObjectURL(subCourse.image)}
+                            alt={subCourse.name}
+                            width="50"
+                          />
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </React.Fragment>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-      {viewerOpen && (
-        <Dialog open={viewerOpen} onClose={() => setViewerOpen(false)} maxWidth="lg" fullWidth>
-          <DialogTitle>View Presentation</DialogTitle>
-          <DialogContent>
-            {fileToView && (
-              <iframe
-                src={`https://view.officeapps.live.com/op/embed.aspx?src=http://localhost:3000${fileToView}`}
-                width="100%"
-                height="600px"
-                style={{ border: "none" }}
-              ></iframe>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setViewerOpen(false)}>Close</Button>
-          </DialogActions>
-        </Dialog>
-      )}
-
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add New Course</DialogTitle>
+        <DialogTitle>{newCourse.parentCourseId ? "Add Sub-Course" : "Add New Course"}</DialogTitle>
         <DialogContent>
           <TextField
             margin="dense"
             label="Course Name"
             name="name"
             fullWidth
+            value={newCourse.name}
             onChange={handleInputChange}
           />
           <TextField
@@ -228,6 +260,7 @@ const Library = () => {
             label="Course Code"
             name="code"
             fullWidth
+            value={newCourse.code}
             onChange={handleInputChange}
           />
           <TextField
@@ -236,7 +269,7 @@ const Library = () => {
             name="file"
             fullWidth
             onChange={handleInputChange}
-            inputProps={{ accept: ".pptx" }}
+            inputProps={{ accept: "application/pdf" }}
           />
           <TextField
             margin="dense"
@@ -254,7 +287,7 @@ const Library = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </Container> 
   );
 };
 

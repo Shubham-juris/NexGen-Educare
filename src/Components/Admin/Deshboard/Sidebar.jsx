@@ -110,6 +110,12 @@ const Sidebar = () => {
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Library" />}
           </ListItem>
+          <ListItem button component={Link} to="/sublibrary" sx={{ '&:hover': { bgcolor: '#636e72' } }}>
+            <ListItemIcon>
+              <MenuBook sx={{ color: 'inherit' }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Sub Library" />}
+          </ListItem>
          
         
           <ListItem button component={Link} to="/exam-upload" sx={{ '&:hover': { bgcolor: '#636e72' } }}>
