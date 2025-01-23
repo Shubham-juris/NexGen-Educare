@@ -16,11 +16,10 @@ import MonographCoursesCards from './Components/Courses/MonographCourses/Monogra
 import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses';
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
-import Sidebar from './Components/Admin/Deshboard/Sidebar';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
 // import StudentAttendanceView from './Components/Student/Attendance/Attendance';
 // import FeeDetails from './Components/Student/Fee/Fee';
-
+ 
 function App() {
   // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +27,7 @@ function App() {
   return (
     <Router>
       {/* Conditionally render Navbar or Sidebar */}
-      {isLoggedIn ? <Sidebar /> : <Navbar />}
+      {isLoggedIn ?  <StudentDeshboard /> : <Navbar />}
 
       <Routes>
         {/* Define Routes for different paths */}

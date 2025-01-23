@@ -26,13 +26,12 @@ import {
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../../../assets/Student/Logo.webp';
-import Courses from '../../Courses/Courses';
 import MockTestCards from '../MockTest/MockTest';
 import MidTerm from '../MidTermExam/MidTerm';
 import FinalExam from '../FinalExam/FinalExam';
 import Result from '../Marks/Result';
 import CoursesCards from '../Courses/Courses';
-import StudentAttendanceView from '../Attendance/Attendance';
+// import StudentAttendanceView from '../Attendance/Attendance';
 import FeeDetails from '../Fee/Fee';
 
 const StudentDeshboard = () => {
@@ -72,7 +71,7 @@ const StudentDeshboard = () => {
         }}
       >
         {/* Logo Section */}
-        <Box sx={{ textAlign: 'center' }}>
+        <Box sx={{ textAlign: 'center',marginTop:"10%" }}>
           <Avatar
             src={Logo}
             alt='Logo'
@@ -96,7 +95,7 @@ const StudentDeshboard = () => {
           <ListItem
             button
             component={Link}
-            to="/Courses"
+            to="/CoursesCards"
             sx={{ '&:hover': { bgcolor: '#636e72' } }}
           >
             <ListItemIcon>
@@ -153,7 +152,7 @@ const StudentDeshboard = () => {
             {!isMobile && <ListItemText primary="Result" />}
           </ListItem>
 
-          <ListItem
+          {/* <ListItem
             button
             component={Link}
             to="/attendance"
@@ -163,7 +162,7 @@ const StudentDeshboard = () => {
               <Event sx={{ color: 'inherit' }} />
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Attendance" />}
-          </ListItem>
+          </ListItem> */}
 
           <ListItem
             button
@@ -205,7 +204,7 @@ const StudentDeshboard = () => {
     backgroundColor: 'white',  // Add a background to avoid overlapping with content below
   }}
 >
-  <Typography variant='h6'>Student Dashboard</Typography>
+    <Typography variant='h6'>Student Dashboard</Typography>
   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
     <InputBase
       placeholder='Search...'
@@ -243,15 +242,15 @@ const StudentDeshboard = () => {
         {/* Main Content */}
         <Box sx={{ flex: 1, p: 2 }}>
           <Routes>
-            <Route path="/" element={<Typography>Welcome to the Student Dashboard!</Typography>} />
-            <Route path='/Courses' element={<Courses/>}/>
+            <Route path="" element={<Typography>Welcome to the Student Dashboard!</Typography>} />
             <Route path='/mocktest' element={<MockTestCards/>}/>
             <Route path='/MidTerm' element={<MidTerm/>}/>
             <Route path='/FinalExam' element={<FinalExam/>}/>
             <Route path='/Result' element={<Result/>}/>
             <Route path='/CoursesCards' element={<CoursesCards/>}/>
-            <Route path='/attendance' element={<StudentAttendanceView/>}/>
             <Route path='/fee' element={<FeeDetails/>}/>
+        {/* <Route path='/attendance' element={<StudentAttendanceView/>}/> */}
+
 
           </Routes>
         </Box>
