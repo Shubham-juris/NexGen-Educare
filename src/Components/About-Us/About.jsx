@@ -1,6 +1,8 @@
+import React, { useEffect } from 'react';
 import { Container, Typography, Box } from '@mui/material';
-import React from 'react';
 import Grid from '@mui/material/Grid2';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 
 import img1 from '../../assets/About-Us/about.png';
 import img2 from '../../assets/About-Us/coaching.png';
@@ -100,6 +102,10 @@ const About = () => {
     },
   ];
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with animation duration
+  }, []);
+
   return (
     <Container>
       {/* About Section */}
@@ -111,6 +117,7 @@ const About = () => {
           alignItems: 'center',
           margin: { xs: 2, sm: 4 },
         }}
+        data-aos='fade-up' // Add AOS animation
       >
         <Box sx={{ padding: { xs: 2, sm: 4 }, textAlign: 'center' }}>
           <Typography variant='h6'>
@@ -134,11 +141,12 @@ const About = () => {
               boxShadow: '0 8px 12px rgba(0,0,0,0.2)',
             },
           }}
+          data-aos='zoom-in' // Add AOS animation
         />
       </Box>
 
       {/* Introduction */}
-      <Box sx={{ textAlign: 'center', my: 4 }}>
+      <Box sx={{ textAlign: 'center', my: 4 }} data-aos='fade-down'>
         <Typography variant='h4'>About Us</Typography>
         <Typography>
           Nexgen Educare Academy is a leading educational institution committed
@@ -159,6 +167,7 @@ const About = () => {
           padding: { xs: 3, sm: 6 },
           textAlign: 'center',
         }}
+        data-aos='fade-right'
       >
         <Container
           sx={{
@@ -172,7 +181,15 @@ const About = () => {
           </Typography>
           <Grid container spacing={1}>
             {offerings.map((offer, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                key={index}
+                data-aos='fade-up' // Add AOS animation
+                data-aos-delay={index * 100} // Add staggered delay
+              >
                 <Box
                   sx={{
                     marginBottom: 4,
