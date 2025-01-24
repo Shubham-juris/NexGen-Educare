@@ -9,6 +9,7 @@ import {
   Alert,
   IconButton,
   InputAdornment,
+  Link,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import AOS from 'aos';
@@ -156,6 +157,23 @@ const Login = ({ onLogin }) => {
               >
                 Login
               </Button>
+
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Link
+                  href="/signup"
+                  variant="body2"
+                  sx={{ textDecoration: 'none' }}
+                >
+                  {"Don't have an account? Create one"}
+                </Link>
+                <Link
+                  href="/forgot-password"
+                  variant="body2"
+                  sx={{ textDecoration: 'none' }}
+                >
+                  Forgot password?
+                </Link>
+              </Box>
             </Box>
           </Box>
         </motion.div>
