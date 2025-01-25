@@ -77,6 +77,8 @@ const ContactUs = () => {
         gutterBottom
         sx={{
           fontSize: { xs: '1.8rem', sm: '2rem' },
+          marginTop:'10%'
+
         }}
       >
         Contact Us

@@ -116,10 +116,12 @@ const About = () => {
           justifyContent: 'center',
           alignItems: 'center',
           margin: { xs: 2, sm: 4 },
+
         }}
         data-aos='fade-up' // Add AOS animation
       >
-        <Box sx={{ padding: { xs: 2, sm: 4 }, textAlign: 'center' }}>
+        <Box sx={{ padding: { xs: 2, sm: 4 }, textAlign: 'center', marginTop:'10%'
+ }}>
           <Typography variant='h6'>
             At our academy, we empower learners with innovative education,
             fostering growth, creativity, and success through personalized
@@ -131,6 +133,7 @@ const About = () => {
           src={img1}
           alt='About Us'
           sx={{
+            marginTop:'10%',
             width: { xs: '100%', sm: 500 },
             height: { xs: '100%', sm: 450 },
             borderRadius: '8px',
@@ -139,6 +142,7 @@ const About = () => {
             '&:hover': {
               transform: 'scale(1.03)',
               boxShadow: '0 8px 12px rgba(0,0,0,0.2)',
+
             },
           }}
           data-aos='zoom-in' // Add AOS animation

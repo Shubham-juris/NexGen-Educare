@@ -5,19 +5,11 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import Courses from './Components/Courses/Courses';
+import Courses from './Components/Courses/WebTech/Courses';
 import Footer from './Components/Footer/Footer';
 import ContactUs from './Components/Contact-Us/Contact';
 import Login from './Components/Login&Signup/Login';
 import AboutUs from './Components/About-Us/About';
-import WebTechCoursesCards from './Components/Courses/WebTech/WebTech';
-import AccountsCoursesCards from './Components/Courses/AccountsCourses/AccountsCourses';
-import CoachingClassesCards from './Components/Courses/CoachingClasses/CoachingClasses';
-import CompetitiveCoachingCards from './Components/Courses/CompetitiveCoaching/CompetitiveCoaching';
-import CookingClassesCards from './Components/Courses/CookingClasses/CookingClasses';
-import LanguagesCoursesCards from './Components/Courses/LanguagesCourses/LanguagesCourses';
-import MonographCoursesCards from './Components/Courses/MonographCourses/MonographCourses';
-import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses';
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
@@ -25,12 +17,12 @@ import RegistrationForm from './assets/RegistrationForm/RegistrationForm';
 // import Rfrom from './assets/RegistrationForm/rfrom';
 import Adminlogin from './Components/Login&Signup/Adminlogin';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
-// import StudentAttendanceView from './Components/Student/Attendance/Attendance';
-// import FeeDetails from './Components/Student/Fee/Fee';
+
 
 function App() {
   // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
   return (
     <Router>
@@ -123,6 +115,7 @@ function App() {
           }
         />
         <Route path='/Sidebar' element={<Sidebar />} />
+
       </Routes>
 
       <RegistrationForm />

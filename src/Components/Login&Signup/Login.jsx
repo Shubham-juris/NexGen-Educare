@@ -79,6 +79,7 @@ const Login = ({ onLogin }) => {
         backgroundImage: `url(${LoginImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        
       }}
     >
       <Container maxWidth="xs">
