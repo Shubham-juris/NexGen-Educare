@@ -17,6 +17,8 @@ import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/Hos
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
+import RegistrationForm from './assets/RegistrationForm/RegistrationForm';
+// import Rfrom from './assets/RegistrationForm/rfrom';
 // import StudentAttendanceView from './Components/Student/Attendance/Attendance';
 // import FeeDetails from './Components/Student/Fee/Fee';
  
@@ -61,6 +63,10 @@ function App() {
           }
         />
       </Routes>
+      
+      <RegistrationForm/>
+      {/* <Rfrom/> */}
+      <Footer />
     </Router>
   );
 }
