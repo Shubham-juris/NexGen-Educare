@@ -74,4 +74,26 @@ router.delete('/courses/:id', (req, res) => {
   });
 });
 
+app.post('/data', (req, res) => {
+  const { name, contactNumber } = req.body;
+  const query = 'INSERT INTO user_contact_info (fullName, contactNumber) VALUES (?, ?)';
+  db.query(query, [name, contactNumber], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.status(201).json({ message: 'Data saved successfully' });
+  });
+});
+
+app.get('/data', (req, res) => {
+  const query = 'SELECT id, fullName AS name, contactNumber FROM user_contact_info';
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
+});
+
+
 module.exports = router;

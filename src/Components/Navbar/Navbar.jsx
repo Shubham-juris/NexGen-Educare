@@ -184,8 +184,12 @@ const Navbar = () => {
               <Button sx={{ color: 'red' }} component={StyledLink} to='/login'>
                 Login
               </Button>
-              <Button sx={{ color: 'red' }} component={StyledLink} to='/signup'>
-                Sign Up
+              <Button
+                sx={{ color: 'red' }}
+                component={StyledLink}
+                to='/Adminlogin'
+              >
+                Admin Login
               </Button>
             </Box>
 
