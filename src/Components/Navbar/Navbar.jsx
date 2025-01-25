@@ -15,8 +15,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import Logo from '../../assets/Navbar/Logo.webp';
 
 // Global Link Style
@@ -50,20 +48,33 @@ const Input = styled(InputBase)({
 });
 
 const Navbar = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchBarOpen, setSearchBarOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Track navbar visibility
 
   useEffect(() => {
-    AOS.init({
-      duration: 1500,
-      offset: 50,
-    });
-  }, []);
+    let lastScrollY = window.scrollY;
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Hide navbar on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -71,23 +82,29 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
-  };
+  }; 
 
   const toggleSearchBar = () => {
     setSearchBarOpen(!searchBarOpen);
   };
 
+  const appBarBackgroundColor =
+    scrollY > 50 ? 'rgba(243, 236, 236, 0.68)' : 'rgba(255, 255, 255, 0)';
+
   return (
     <Box sx={{ overflowY: 'hidden' }}>
+      {/* Fixed and animated AppBar */}
       <AppBar
-        position='sticky'
+        position="fixed"
         sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.4)',
-          backdropFilter: 'blur(1500px)',
+          backgroundColor: appBarBackgroundColor,
+          backdropFilter: 'blur(0px)',
           color: 'red',
           overflowX: 'hidden',
+          boxShadow: scrollY > 50 ? '0 2px 4px rgba(0, 0, 0, 0.2)' : 'none',
+          transition: 'transform 0.3s ease, background-color 0.3s ease',
+          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)', // Hide/show navbar
         }}
-        data-aos='fade-down'
       >
         <Toolbar
           sx={{
@@ -106,19 +123,27 @@ const Navbar = () => {
               width: '100%',
             }}
           >
+            {/* Left: Logo */}
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              <StyledLink to='/'>
+              <StyledLink to="/">
                 <img
                   src={Logo}
-                  alt='Logo'
-                  style={{ height: '50px', width: 'auto', cursor: 'pointer' }}
+                  alt="Logo"
+                  style={{
+                    height: '70px',
+                    width: 'auto',
+                    cursor: 'pointer',
+                    marginLeft: '30%',
+                    marginTop: '7%',
+                  }}
                 />
               </StyledLink>
+              {/* Center: Navigation Links */}
               <Box
                 sx={{
                   display: { xs: 'none', md: 'flex' },
                   gap: 6,
-                  marginLeft: '160px',
+                  marginLeft: '200px',
                 }}
               >
                 {['Courses', 'About Us', 'Contact Us'].map((text) => (
@@ -127,6 +152,8 @@ const Navbar = () => {
                     sx={{
                       position: 'relative',
                       color: 'red',
+                      fontSize: '1.1rem', // Increased font size
+                      fontWeight: 'bold', // Optional: Make it bold
                       '&:after': {
                         content: '""',
                         position: 'absolute',
@@ -152,6 +179,7 @@ const Navbar = () => {
               </Box>
             </Box>
 
+            {/* Right: Search and Buttons */}
             <Box
               sx={{
                 display: 'flex',
@@ -164,24 +192,29 @@ const Navbar = () => {
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
-                  <Input
-                    placeholder='Search...'
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                  />
-                  <IconButton color='inherit' onClick={toggleSearchBar}>
+                  <Input placeholder="Search..." />
+                  <IconButton color="inherit" onClick={toggleSearchBar}>
                     <CloseIcon />
                   </IconButton>
                 </Search>
               ) : (
-                <IconButton color='inherit' onClick={toggleSearchBar}>
+                <IconButton color="inherit" onClick={toggleSearchBar}>
                   <SearchIcon />
                 </IconButton>
               )}
             </Box>
 
+            {/* Login/Sign Up Buttons */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-              <Button sx={{ color: 'red' }} component={StyledLink} to='/login'>
+              <Button
+                sx={{
+                  color: 'red',
+                  fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                }}
+                component={StyledLink}
+                to="/login"
+              >
                 Login
               </Button>
               <Button
@@ -193,11 +226,12 @@ const Navbar = () => {
               </Button>
             </Box>
 
+            {/* Mobile Menu Icon */}
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
-                color='inherit'
+                color="inherit"
                 onClick={handleMobileMenuToggle}
-                aria-label='menu'
+                aria-label="menu"
               >
                 {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
@@ -205,8 +239,9 @@ const Navbar = () => {
           </Box>
         </Toolbar>
 
+        {/* Mobile Drawer */}
         <Drawer
-          anchor='right'
+          anchor="right"
           open={mobileMenuOpen}
           onClose={closeMobileMenu}
           sx={{
@@ -223,7 +258,7 @@ const Navbar = () => {
               alignItems: 'center',
             }}
           >
-            <Typography variant='h6'>Menu</Typography>
+            <Typography variant="h6">Menu</Typography>
             <IconButton onClick={closeMobileMenu}>
               <CloseIcon />
             </IconButton>
@@ -245,7 +280,7 @@ const Navbar = () => {
               sx={{ color: 'red' }}
               onClick={closeMobileMenu}
               component={StyledLink}
-              to='/login'
+              to="/login"
             >
               Login
             </Button>
@@ -253,7 +288,7 @@ const Navbar = () => {
               sx={{ color: 'red' }}
               onClick={closeMobileMenu}
               component={StyledLink}
-              to='/signup'
+              to="/signup"
             >
               Sign Up
             </Button>

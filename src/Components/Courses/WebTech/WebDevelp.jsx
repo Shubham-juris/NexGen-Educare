@@ -8,7 +8,7 @@ import {
   Button,
 } from '@mui/material';
 import { Link } from 'react-router-dom'; // Import Link for routing
-
+ 
 import GraphicDesign from '../../../assets/Courses/WebTech/Graphic-Design.png';
 import FullStackDeveloper from '../../../assets/Courses/WebTech/Full-Stack-Developer.png';
 import WebDesigning from '../../../assets/Courses/WebTech/Web-Designing.png';
@@ -17,7 +17,7 @@ import VideoEditing from '../../../assets/Courses/WebTech/Video-Editing.png';
 import SEOManagement from '../../../assets/Courses/WebTech/SEO-Management.png';
 import DigitalMarketing from '../../../assets/Courses/WebTech/Digital-Marketing.png';
 import ContentWriting from '../../../assets/Courses/WebTech/Content-Writing.png';
-
+ 
 const cardsData = [
   {
     id: 1,
@@ -68,7 +68,7 @@ const cardsData = [
     path: '/content-writing',
   },
 ];
-
+ 
 const WebTechCoursesCards = () => {
   return (
     <Grid container spacing={2} justifyContent='center'>
@@ -78,7 +78,7 @@ const WebTechCoursesCards = () => {
           display: 'flex',
           justifyContent: 'center',
           width: '100%',
-          mt: 4,
+          mt:'10%',
           mb: 3,
         }}
       >
@@ -147,5 +147,5 @@ const WebTechCoursesCards = () => {
     </Grid>
   );
 };
-
+ 
 export default WebTechCoursesCards;
