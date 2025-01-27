@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,42 +9,42 @@ import {
   Drawer,
   Divider,
   Typography,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled } from '@mui/system';
-import { Link } from 'react-router-dom';
-import Logo from '../../assets/Navbar/Logo.webp';
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import { styled } from "@mui/system";
+import { Link } from "react-router-dom";
+import Logo from "../../assets/Navbar/Logo.webp";
 
 // Global Link Style
 const StyledLink = styled(Link)({
-  textDecoration: 'none',
-  color: 'red',
+  textDecoration: "none",
+  color: "red",
 });
 
-const Search = styled('div')({
-  position: 'relative',
-  borderRadius: '4px',
-  backgroundColor: '#f1f1f1',
-  marginLeft: '16px',
-  width: '100%',
-  maxWidth: '400px',
-  display: 'flex',
-  alignItems: 'center',
+const Search = styled("div")({
+  position: "relative",
+  borderRadius: "4px",
+  backgroundColor: "#f1f1f1",
+  marginLeft: "16px",
+  width: "100%",
+  maxWidth: "400px",
+  display: "flex",
+  alignItems: "center",
 });
 
-const SearchIconWrapper = styled('div')({
-  position: 'absolute',
-  pointerEvents: 'none',
-  left: '10px',
-  top: '50%',
-  transform: 'translateY(-50%)',
+const SearchIconWrapper = styled("div")({
+  position: "absolute",
+  pointerEvents: "none",
+  left: "10px",
+  top: "50%",
+  transform: "translateY(-50%)",
 });
 
 const Input = styled(InputBase)({
-  paddingLeft: '30px',
-  width: '100%',
+  paddingLeft: "30px",
+  width: "100%",
 });
 
 const Navbar = () => {
@@ -69,10 +69,10 @@ const Navbar = () => {
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -82,96 +82,96 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
-  }; 
+  };
 
   const toggleSearchBar = () => {
     setSearchBarOpen(!searchBarOpen);
   };
 
   const appBarBackgroundColor =
-    scrollY > 50 ? 'rgba(243, 236, 236, 0.68)' : 'rgba(255, 255, 255, 0)';
+    scrollY > 50 ? "rgba(243, 236, 236, 0.68)" : "rgba(255, 255, 255, 0)";
 
   return (
-    <Box sx={{ overflowY: 'hidden' }}>
+    <Box sx={{ overflowY: "hidden" }}>
       {/* Fixed and animated AppBar */}
       <AppBar
         position="fixed"
         sx={{
           backgroundColor: appBarBackgroundColor,
-          backdropFilter: 'blur(0px)',
-          color: 'red',
-          overflowX: 'hidden',
-          boxShadow: scrollY > 50 ? '0 2px 4px rgba(0, 0, 0, 0.2)' : 'none',
-          transition: 'transform 0.3s ease, background-color 0.3s ease',
-          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)', // Hide/show navbar
+          backdropFilter: "blur(0px)",
+          color: "red",
+          overflowX: "hidden",
+          boxShadow: scrollY > 50 ? "0 2px 4px rgba(0, 0, 0, 0.2)" : "none",
+          transition: "transform 0.3s ease, background-color 0.3s ease",
+          transform: isVisible ? "translateY(0)" : "translateY(-100%)", // Hide/show navbar
         }}
       >
         <Toolbar
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              maxWidth: '1200px',
-              width: '100%',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              maxWidth: "1200px",
+              width: "100%",
             }}
           >
             {/* Left: Logo */}
-            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
               <StyledLink to="/">
                 <img
                   src={Logo}
                   alt="Logo"
                   style={{
-                    height: '70px',
-                    width: 'auto',
-                    cursor: 'pointer',
-                    marginLeft: '30%',
-                    marginTop: '7%',
+                    height: "70px",
+                    width: "auto",
+                    cursor: "pointer",
+                    marginLeft: "30%",
+                    marginTop: "7%",
                   }}
                 />
               </StyledLink>
               {/* Center: Navigation Links */}
               <Box
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
+                  display: { xs: "none", md: "flex" },
                   gap: 6,
-                  marginLeft: '200px',
+                  marginLeft: "200px",
                 }}
               >
-                {['Courses', 'About Us', 'Contact Us'].map((text) => (
+                {["Courses", "About Us", "Contact Us"].map((text) => (
                   <Button
                     key={text}
                     sx={{
-                      position: 'relative',
-                      color: 'red',
-                      fontSize: '1.1rem', // Increased font size
-                      fontWeight: 'bold', // Optional: Make it bold
-                      '&:after': {
+                      position: "relative",
+                      color: "red",
+                      fontSize: "1.1rem", // Increased font size
+                      fontWeight: "bold", // Optional: Make it bold
+                      "&:after": {
                         content: '""',
-                        position: 'absolute',
-                        width: '100%',
-                        height: '4px',
+                        position: "absolute",
+                        width: "100%",
+                        height: "4px",
                         bottom: 0,
                         left: 0,
-                        backgroundColor: 'red',
-                        transform: 'scaleX(0)',
-                        transformOrigin: 'center',
-                        transition: 'transform 0.3s ease',
+                        backgroundColor: "red",
+                        transform: "scaleX(0)",
+                        transformOrigin: "center",
+                        transition: "transform 0.3s ease",
                       },
-                      '&:hover:after': {
-                        transform: 'scaleX(1)',
+                      "&:hover:after": {
+                        transform: "scaleX(1)",
                       },
                     }}
                     component={StyledLink}
-                    to={`/${text.replace(' ', '').toLowerCase()}`}
+                    to={`/${text.replace(" ", "").toLowerCase()}`}
                   >
                     {text}
                   </Button>
@@ -182,9 +182,9 @@ const Navbar = () => {
             {/* Right: Search and Buttons */}
             <Box
               sx={{
-                display: 'flex',
-                alignItems: 'center',
-                marginRight: '16px',
+                display: "flex",
+                alignItems: "center",
+                marginRight: "16px",
               }}
             >
               {searchBarOpen ? (
@@ -205,12 +205,12 @@ const Navbar = () => {
             </Box>
 
             {/* Login/Sign Up Buttons */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
+            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
               <Button
                 sx={{
-                  color: 'red',
-                  fontSize: '1.1rem',
-                  fontWeight: 'bold',
+                  color: "red",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
                 }}
                 component={StyledLink}
                 to="/login"
@@ -218,16 +218,21 @@ const Navbar = () => {
                 Login
               </Button>
               <Button
-                sx={{ color: 'red' }}
+                sx={{
+                  color: "red",
+                  color: "red",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                }}
                 component={StyledLink}
-                to='/Adminlogin'
+                to="/Adminlogin"
               >
                 Admin Login
               </Button>
             </Box>
 
             {/* Mobile Menu Icon */}
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
                 color="inherit"
                 onClick={handleMobileMenuToggle}
@@ -245,17 +250,17 @@ const Navbar = () => {
           open={mobileMenuOpen}
           onClose={closeMobileMenu}
           sx={{
-            '& .MuiDrawer-paper': {
-              width: '250px',
-              padding: '16px',
+            "& .MuiDrawer-paper": {
+              width: "250px",
+              padding: "16px",
             },
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Typography variant="h6">Menu</Typography>
@@ -264,20 +269,20 @@ const Navbar = () => {
             </IconButton>
           </Box>
           <Divider />
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {['Courses', 'About Us', 'Contact Us'].map((text) => (
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            {["Courses", "About Us", "Contact Us"].map((text) => (
               <Button
                 key={text}
                 onClick={closeMobileMenu}
                 component={StyledLink}
-                to={`/${text.replace(' ', '').toLowerCase()}`}
-                style={{ color: 'red' }}
+                to={`/${text.replace(" ", "").toLowerCase()}`}
+                style={{ color: "red" }}
               >
                 {text}
               </Button>
             ))}
             <Button
-              sx={{ color: 'red' }}
+              sx={{ color: "red" }}
               onClick={closeMobileMenu}
               component={StyledLink}
               to="/login"
@@ -285,7 +290,7 @@ const Navbar = () => {
               Login
             </Button>
             <Button
-              sx={{ color: 'red' }}
+              sx={{ color: "red" }}
               onClick={closeMobileMenu}
               component={StyledLink}
               to="/signup"

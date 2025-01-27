@@ -1,28 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from 'react-router-dom';
-import Courses from './Components/Courses/WebTech/Courses';
-import Footer from './Components/Footer/Footer';
-import ContactUs from './Components/Contact-Us/Contact';
-import Login from './Components/Login&Signup/Login';
-import AboutUs from './Components/About-Us/About';
-import Navbar from './Components/Navbar/Navbar';
-import HeroSection from './Components/Hero/HeroSection';
-import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
-import RegistrationForm from './assets/RegistrationForm/RegistrationForm';
+} from "react-router-dom";
+import Courses from "./Components/Courses/WebTech/Courses";
+import Footer from "./Components/Footer/Footer";
+import ContactUs from "./Components/Contact-Us/Contact";
+import Login from "./Components/Login&Signup/Login";
+import AboutUs from "./Components/About-Us/About";
+import Navbar from "./Components/Navbar/Navbar";
+import HeroSection from "./Components/Hero/HeroSection";
+import StudentDeshboard from "./Components/Student/StudentDeshboard/StudentDeshboard";
+import RegistrationForm from "./assets/RegistrationForm/RegistrationForm";
 // import Rfrom from './assets/RegistrationForm/rfrom';
-import Adminlogin from './Components/Login&Signup/Adminlogin';
-import Sidebar from './Components/Admin/Deshboard/Sidebar';
-
+import Adminlogin from "./Components/Login&Signup/Adminlogin";
+import Sidebar from "./Components/Admin/Deshboard/Sidebar";
 
 function App() {
   // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
 
   return (
     <Router>
@@ -32,7 +30,7 @@ function App() {
       <Routes>
         {/* Define Routes for different paths */}
         <Route
-          path='/'
+          path="/"
           element={
             <>
               <HeroSection />
@@ -41,7 +39,7 @@ function App() {
           }
         />
         <Route
-          path='/Courses'
+          path="/Courses"
           element={
             <>
               <Courses />
@@ -50,7 +48,7 @@ function App() {
           }
         />
         <Route
-          path='/contactus'
+          path="/contactus"
           element={
             <>
               <ContactUs />
@@ -59,16 +57,16 @@ function App() {
           }
         />
         <Route
-          path='/login'
+          path="/login"
           element={
             <>
-              <Login onLogin={() => setIsLoggedIn(true)} />{' '}
+              <Login onLogin={() => setIsLoggedIn(true)} />{" "}
             </>
           }
         />
-        <Route path='/Adminlogin' element={<Adminlogin />} />
+        <Route path="/Adminlogin" element={<Adminlogin />} />
         <Route
-          path='/aboutUs'
+          path="/aboutUs"
           element={
             <>
               <AboutUs />
@@ -77,53 +75,21 @@ function App() {
           }
         />
 
-        {/* Courses routes */}
-        <Route path='/WebTechCoursesCards' element={<WebTechCoursesCards />} />
-        <Route
-          path='/AccountsCoursesCards'
-          element={<AccountsCoursesCards />}
-        />
-        <Route
-          path='/MonographCoursesCards'
-          element={<MonographCoursesCards />}
-        />
-        <Route
-          path='/LanguagesCoursesCards'
-          element={<LanguagesCoursesCards />}
-        />
-        <Route
-          path='/HospitalistCoursesCards'
-          element={<HospitalistCoursesCards />}
-        />
-        <Route
-          path='/CompetitiveCoachingCards'
-          element={<CompetitiveCoachingCards />}
-        />
-        <Route
-          path='/CoachingClassesCards'
-          element={<CoachingClassesCards />}
-        />
-        <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
-        {/* <Route path='/FeeDetails' element={<FeeDetails />} />
-        <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} /> */}
-
         {/* Protected Route for Student Dashboard */}
         <Route
-          path='/Sdashboard'
+          path="/Sdashboard"
           element={
-            isLoggedIn ? <StudentDeshboard /> : <Navigate to='/login' replace />
+            isLoggedIn ? <StudentDeshboard /> : <Navigate to="/login" replace />
           }
         />
-        <Route path='/Sidebar' element={<Sidebar />} />
-
+        <Route path="/Sidebar" element={<Sidebar />} />
       </Routes>
 
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
       {/* <Rfrom/> */}
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
 
 export default App;
- 
