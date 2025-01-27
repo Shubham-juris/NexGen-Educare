@@ -14,7 +14,8 @@ import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
 import RegistrationForm from './assets/RegistrationForm/RegistrationForm';
-// import Rfrom from './assets/RegistrationForm/rfrom';
+import RegistrationData from './assets/RegistrationForm/ViewFrom';
+// // import Rfrom from './assets/RegistrationForm/rfrom';
 import Adminlogin from './Components/Login&Signup/Adminlogin';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
 
@@ -119,6 +120,7 @@ function App() {
       </Routes>
 
       <RegistrationForm />
+      <RegistrationData/>
       {/* <Rfrom/> */}
       <Footer />
     </Router>
