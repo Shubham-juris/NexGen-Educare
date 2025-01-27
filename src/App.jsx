@@ -18,12 +18,18 @@ import RegistrationData from './assets/RegistrationForm/ViewFrom';
 // // import Rfrom from './assets/RegistrationForm/rfrom';
 import Adminlogin from './Components/Login&Signup/Adminlogin';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
-
+import WebTechCoursesCards from './Components/Courses/WebTech/WebDevelp';
+import AccountsCoursesCards from './Components/Courses/AccountsCourses/AccountsCourses';
+import MonographCoursesCards from './Components/Courses/MonographCourses/MonographCourses';
+import LanguagesCoursesCards from './Components/Courses/LanguagesCourses/LanguagesCourses';
+import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses';
+import CompetitiveCoachingCards from './Components/Courses/CompetitiveCoaching/CompetitiveCoaching';
+import CoachingClassesCards from './Components/Courses/CoachingClasses/CoachingClasses';
+import CookingClassesCards from './Components/Courses/CookingClasses/CookingClasses';
 
 function App() {
   // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
 
   return (
     <Router>
@@ -116,7 +122,6 @@ function App() {
           }
         />
         <Route path='/Sidebar' element={<Sidebar />} />
-
       </Routes>
 
       <RegistrationForm />
@@ -128,4 +133,3 @@ function App() {
 }
 
 export default App;
- 
