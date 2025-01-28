@@ -195,7 +195,7 @@ const NavbarAndHero = () => {
                 Login
               </Button>
               <Button color='inherit' component={Link} to='/signup'>
-                Sign Up
+                Admin Login
               </Button>
             </Box>
 
@@ -252,7 +252,6 @@ const NavbarAndHero = () => {
       </AppBar>
 
       {/* Hero Section */}
-     
     </Box>
   );
 };
