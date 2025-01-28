@@ -82,7 +82,7 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
-  }; 
+  };
 
   const toggleSearchBar = () => {
     setSearchBarOpen(!searchBarOpen);
@@ -95,7 +95,7 @@ const Navbar = () => {
     <Box sx={{ overflowY: 'hidden' }}>
       {/* Fixed and animated AppBar */}
       <AppBar
-        position="fixed"
+        position='fixed'
         sx={{
           backgroundColor: appBarBackgroundColor,
           backdropFilter: 'blur(0px)',
@@ -125,10 +125,10 @@ const Navbar = () => {
           >
             {/* Left: Logo */}
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              <StyledLink to="/">
+              <StyledLink to='/'>
                 <img
                   src={Logo}
-                  alt="Logo"
+                  alt='Logo'
                   style={{
                     height: '70px',
                     width: 'auto',
@@ -192,13 +192,13 @@ const Navbar = () => {
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
-                  <Input placeholder="Search..." />
-                  <IconButton color="inherit" onClick={toggleSearchBar}>
+                  <Input placeholder='Search...' />
+                  <IconButton color='inherit' onClick={toggleSearchBar}>
                     <CloseIcon />
                   </IconButton>
                 </Search>
               ) : (
-                <IconButton color="inherit" onClick={toggleSearchBar}>
+                <IconButton color='inherit' onClick={toggleSearchBar}>
                   <SearchIcon />
                 </IconButton>
               )}
@@ -213,14 +213,18 @@ const Navbar = () => {
                   fontWeight: 'bold',
                 }}
                 component={StyledLink}
-                to="/login"
+                to='/login'
               >
                 Login
               </Button>
               <Button
-                sx={{ color: 'red' }}
+                sx={{
+                  color: 'red',
+                  fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                }}
                 component={StyledLink}
-                to='/Adminlogin'
+                to='/adminlogin'
               >
                 Admin Login
               </Button>
@@ -229,9 +233,9 @@ const Navbar = () => {
             {/* Mobile Menu Icon */}
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
-                color="inherit"
+                color='inherit'
                 onClick={handleMobileMenuToggle}
-                aria-label="menu"
+                aria-label='menu'
               >
                 {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
@@ -241,7 +245,7 @@ const Navbar = () => {
 
         {/* Mobile Drawer */}
         <Drawer
-          anchor="right"
+          anchor='right'
           open={mobileMenuOpen}
           onClose={closeMobileMenu}
           sx={{
@@ -258,7 +262,7 @@ const Navbar = () => {
               alignItems: 'center',
             }}
           >
-            <Typography variant="h6">Menu</Typography>
+            <Typography variant='h6'>Menu</Typography>
             <IconButton onClick={closeMobileMenu}>
               <CloseIcon />
             </IconButton>
@@ -280,7 +284,7 @@ const Navbar = () => {
               sx={{ color: 'red' }}
               onClick={closeMobileMenu}
               component={StyledLink}
-              to="/login"
+              to='/login'
             >
               Login
             </Button>
@@ -288,9 +292,9 @@ const Navbar = () => {
               sx={{ color: 'red' }}
               onClick={closeMobileMenu}
               component={StyledLink}
-              to="/signup"
+              to='/adminlogin'
             >
-              Sign Up
+              Admin Login
             </Button>
           </Box>
         </Drawer>

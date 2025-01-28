@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Outlet,
 } from 'react-router-dom';
 import Courses from './Components/Courses/WebTech/Courses';
 import Footer from './Components/Footer/Footer';
@@ -13,44 +14,43 @@ import AboutUs from './Components/About-Us/About';
 import Navbar from './Components/Navbar/Navbar';
 import HeroSection from './Components/Hero/HeroSection';
 import StudentDeshboard from './Components/Student/StudentDeshboard/StudentDeshboard';
-import RegistrationForm from './assets/RegistrationForm/RegistrationForm';
-import RegistrationData from './assets/RegistrationForm/ViewFrom';
-// // import Rfrom from './assets/RegistrationForm/rfrom';
-import Adminlogin from './Components/Login&Signup/Adminlogin';
+import AdminLogin from './Components/Login&Signup/AdminLogin';
 import Sidebar from './Components/Admin/Deshboard/Sidebar';
-import WebTechCoursesCards from './Components/Courses/WebTech/WebDevelp';
-import AccountsCoursesCards from './Components/Courses/AccountsCourses/AccountsCourses';
-import MonographCoursesCards from './Components/Courses/MonographCourses/MonographCourses';
-import LanguagesCoursesCards from './Components/Courses/LanguagesCourses/LanguagesCourses';
-import HospitalistCoursesCards from './Components/Courses/HospitalistCourses/HospitalistCourses';
-import CompetitiveCoachingCards from './Components/Courses/CompetitiveCoaching/CompetitiveCoaching';
-import CoachingClassesCards from './Components/Courses/CoachingClasses/CoachingClasses';
-import CookingClassesCards from './Components/Courses/CookingClasses/CookingClasses';
+import Library from './Components/Admin/Library/Library';
+import StudentData from './Components/Admin/Student-data/StudentData';
+import TeacherData from './Components/Admin/Teacher-data/TeacherData';
+import NoticePage from './Components/Admin/Notification/Notice';
 
 function App() {
-  // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const SidebarLayout = () => (
+    <>
+      <Sidebar />
+      <div style={{ marginLeft: '250px', padding: '20px' }}>
+        <Outlet />
+      </div>
+    </>
+  );
 
   return (
     <Router>
-      {/* Conditionally render Navbar or Sidebar */}
-      {isLoggedIn ? <StudentDeshboard /> : <Navbar />}
-
       <Routes>
-        {/* Define Routes for different paths */}
         <Route
           path='/'
           element={
             <>
+              <Navbar />
               <HeroSection />
               <Footer />
             </>
           }
         />
         <Route
-          path='/Courses'
+          path='/courses'
           element={
             <>
+              <Navbar />
               <Courses />
               <Footer />
             </>
@@ -60,6 +60,7 @@ function App() {
           path='/contactus'
           element={
             <>
+              <Navbar />
               <ContactUs />
               <Footer />
             </>
@@ -67,67 +68,39 @@ function App() {
         />
         <Route
           path='/login'
-          element={
-            <>
-              <Login onLogin={() => setIsLoggedIn(true)} />{' '}
-            </>
-          }
+          element={<Login onLogin={() => setIsLoggedIn(true)} />}
         />
-        <Route path='/Adminlogin' element={<Adminlogin />} />
         <Route
-          path='/aboutUs'
+          path='/adminlogin'
+          element={<AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />}
+        />
+        <Route
+          path='/aboutus'
           element={
             <>
+              <Navbar />
               <AboutUs />
               <Footer />
             </>
           }
         />
-
-        {/* Courses routes */}
-        <Route path='/WebTechCoursesCards' element={<WebTechCoursesCards />} />
         <Route
-          path='/AccountsCoursesCards'
-          element={<AccountsCoursesCards />}
-        />
-        <Route
-          path='/MonographCoursesCards'
-          element={<MonographCoursesCards />}
-        />
-        <Route
-          path='/LanguagesCoursesCards'
-          element={<LanguagesCoursesCards />}
-        />
-        <Route
-          path='/HospitalistCoursesCards'
-          element={<HospitalistCoursesCards />}
-        />
-        <Route
-          path='/CompetitiveCoachingCards'
-          element={<CompetitiveCoachingCards />}
-        />
-        <Route
-          path='/CoachingClassesCards'
-          element={<CoachingClassesCards />}
-        />
-        <Route path='/CookingClassesCards' element={<CookingClassesCards />} />
-        {/* <Route path='/FeeDetails' element={<FeeDetails />} />
-        <Route path='/StudentAttendanceView' element={<StudentAttendanceView />} /> */}
-
-        {/* Protected Route for Student Dashboard */}
-        <Route
-          path='/Sdashboard'
+          path='/adminlogin'
           element={
-            isLoggedIn ? <StudentDeshboard /> : <Navigate to='/login' replace />
+            isLoggedIn ? (
+              <StudentDeshboard />
+            ) : (
+              <Navigate to='/adminlogin' replace />
+            )
           }
         />
-        <Route path='/Sidebar' element={<Sidebar />} />
+        <Route path='/sidebar/*' element={<SidebarLayout />}>
+          <Route path='library' element={<Library />} />
+          <Route path='studentdata' element={<StudentData />} />
+          <Route path='teacherdata' element={<TeacherData />} />
+          <Route path='notice' element={<NoticePage />} />
+        </Route>
       </Routes>
-
-      <RegistrationForm />
-      <RegistrationData/>
-      {/* <Rfrom/> */}
-      <Footer />
     </Router>
   );
 }
