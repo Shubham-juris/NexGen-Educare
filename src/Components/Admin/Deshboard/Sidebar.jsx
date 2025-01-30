@@ -11,7 +11,6 @@ import {
   IconButton,
   InputBase,
   Avatar,
-  Collapse,
   Menu,
   MenuItem,
   useMediaQuery,
@@ -21,7 +20,6 @@ import {
   People,
   School,
   MenuBook,
-  LibraryBooks,
   Notifications,
   Message,
   AddBox,
@@ -35,7 +33,6 @@ import StudentData from "../Student-data/StudentData";
 import TeacherData from "../Teacher-data/TeacherData";
 
 const Sidebar = () => {
-  const [open, setOpen] = React.useState(false);
   const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -236,3 +233,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

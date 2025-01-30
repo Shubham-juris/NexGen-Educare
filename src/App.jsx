@@ -19,20 +19,16 @@ import Adminlogin from "./Components/Login&Signup/Adminlogin";
 import Sidebar from "./Components/Admin/Deshboard/Sidebar";
 
 function App() {
-  // Track login state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      {/* Conditionally render Navbar or Sidebar */}
-      {isLoggedIn ? <StudentDeshboard /> : <Navbar />}
-
       <Routes>
-        {/* Define Routes for different paths */}
         <Route
           path="/"
           element={
             <>
+              <Navbar />
               <HeroSection />
               <Footer />
             </>
@@ -42,6 +38,7 @@ function App() {
           path="/Courses"
           element={
             <>
+              <Navbar />
               <Courses />
               <Footer />
             </>
@@ -51,6 +48,7 @@ function App() {
           path="/contactus"
           element={
             <>
+              <Navbar />
               <ContactUs />
               <Footer />
             </>
@@ -69,6 +67,7 @@ function App() {
           path="/aboutUs"
           element={
             <>
+              <Navbar />
               <AboutUs />
               <Footer />
             </>
