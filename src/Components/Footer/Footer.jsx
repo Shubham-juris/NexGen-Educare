@@ -60,7 +60,7 @@ const Footer = () => {
     to="tel:+919115177792"
     style={{ textDecoration: 'none', color: 'black' }} // Inline styling for black color and no text decoration
   >
-    +91 91151 77792
+    +91 9056729370
   </Link>
 </Typography>
 <Typography

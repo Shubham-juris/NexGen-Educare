@@ -1,6 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom"; // Import Outlet for nested routes
 import {
   Box,
   Typography,
@@ -9,7 +8,6 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-  InputBase,
   Avatar,
   Menu,
   MenuItem,
@@ -25,21 +23,16 @@ import {
   AddBox,
   UploadFile,
   AccountCircle,
+  HowToReg,
 } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
-import Logo from "../../../assets/Admin/Sidebarlogo/Logo.webp";
-import Library from "../Library/Library";
-import StudentData from "../Student-data/StudentData";
-import TeacherData from "../Teacher-data/TeacherData";
+import Logo from "../../../assets/Admin/Sidebarlogo/Logo.webp"; // Update with correct path
 
 const Sidebar = () => {
-  const [profileMenuAnchor, setProfileMenuAnchor] = React.useState(null);
+  const [profileMenuAnchor, setProfileMenuAnchor] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const handleSubmenuToggle = () => {
-    setOpen(!open);
-  };
+  const [open, setOpen] = useState(false); // State to toggle submenus (if needed)
 
   const handleProfileMenuOpen = (event) => {
     setProfileMenuAnchor(event.currentTarget);
@@ -87,18 +80,7 @@ const Sidebar = () => {
           <ListItem
             button
             component={Link}
-            to="/dashboard"
-            sx={{ "&:hover": { bgcolor: "#636e72" } }}
-          >
-            <ListItemIcon>
-              <Dashboard sx={{ color: "inherit" }} />
-            </ListItemIcon>
-            {!isMobile && <ListItemText primary="Dashboard" />}
-          </ListItem>
-          <ListItem
-            button
-            component={Link}
-            to="/StudentData"
+            to="StudentData" // Nested route for Student Data
             sx={{ "&:hover": { bgcolor: "#636e72" } }}
           >
             <ListItemIcon>
@@ -106,10 +88,11 @@ const Sidebar = () => {
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Students" />}
           </ListItem>
+
           <ListItem
             button
             component={Link}
-            to="/TeacherData"
+            to="TeacherData" // Nested route for Teacher Data
             sx={{ "&:hover": { bgcolor: "#636e72" } }}
           >
             <ListItemIcon>
@@ -117,10 +100,11 @@ const Sidebar = () => {
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Teachers" />}
           </ListItem>
+
           <ListItem
             button
             component={Link}
-            to="/library"
+            to="Library" // Nested route for Library
             sx={{ "&:hover": { bgcolor: "#636e72" } }}
           >
             <ListItemIcon>
@@ -128,22 +112,23 @@ const Sidebar = () => {
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Library" />}
           </ListItem>
+
           <ListItem
             button
             component={Link}
-            to="/sublibrary"
+            to="RegistrationForm" // Nested route for Registration Form
             sx={{ "&:hover": { bgcolor: "#636e72" } }}
           >
             <ListItemIcon>
-              <MenuBook sx={{ color: "inherit" }} />
+              <HowToReg sx={{ color: "inherit" }} />
             </ListItemIcon>
-            {!isMobile && <ListItemText primary="Sub Library" />}
+            {!isMobile && <ListItemText primary="Enrollment" />}
           </ListItem>
 
           <ListItem
             button
             component={Link}
-            to="/exam-upload"
+            to="#" // Nested route for Exam Upload (if needed)
             sx={{ "&:hover": { bgcolor: "#636e72" } }}
           >
             <ListItemIcon>
@@ -181,16 +166,6 @@ const Sidebar = () => {
         >
           <Typography variant="h6">Admin Dashboard</Typography>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <InputBase
-              placeholder="Search..."
-              sx={{
-                bgcolor: "#FFF",
-                px: 2,
-                py: 1,
-                borderRadius: 1,
-                width: "200px",
-              }}
-            />
             <IconButton component={Link} to="/notice">
               <Notifications />
             </IconButton>
@@ -208,24 +183,16 @@ const Sidebar = () => {
           anchorEl={profileMenuAnchor}
           open={Boolean(profileMenuAnchor)}
           onClose={handleProfileMenuClose}
-          h
         >
           <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
           <MenuItem onClick={handleProfileMenuClose}>Settings</MenuItem>
           <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
         </Menu>
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <Box sx={{ flex: 1, p: 2 }}>
-          <Routes>
-            <Route path="/library" element={<Library />} />
-            <Route path="/StudentData" element={<StudentData />} />
-            <Route path="/TeacherData" element={<TeacherData />} />
-            <Route
-              path="/"
-              element={<Typography>Welcome to the Admin Dashboard!</Typography>}
-            />
-          </Routes>
+          {/* The content will change based on nested routes */}
+          <Outlet /> {/* This renders the content for the active nested route */}
         </Box>
       </Box>
     </Box>
@@ -233,4 +200,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

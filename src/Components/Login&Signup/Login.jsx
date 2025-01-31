@@ -160,15 +160,9 @@ const Login = ({ onLogin }) => {
               </Button>
 
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+               
                 <Link
-                  href="/signup"
-                  variant="body2"
-                  sx={{ textDecoration: 'none' }}
-                >
-                  {"Don't have an account? Create one"}
-                </Link>
-                <Link
-                  href="/forgot-password"
+                  href="#"
                   variant="body2"
                   sx={{ textDecoration: 'none' }}
                 >
