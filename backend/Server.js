@@ -271,6 +271,86 @@ const server = http.createServer((req, res) => {
     res.end();
     return;
   }
+//////////////////////////////////////////////
+
+// Save Registration Data API
+app.post('/save-registration', async (req, res) => {
+  const formData = req.body;
+  console.log('Received registration data:', formData);
+
+  try {
+    const query = `INSERT INTO registrations 
+      (firstName, lastName, fatherName, dob, gender, contactNumber, email, address, courses, preferredTiming, reason, qualification, institution, graduationYear, experience, relevantExperience, paymentOption, paymentMethod, transactionId, declaration, student_id, password) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const values = [
+      formData.firstName,
+      formData.lastName,
+      formData.fatherName,
+      formData.dob,
+      formData.gender,
+      formData.contactNumber,
+      formData.email,
+      formData.address,
+      JSON.stringify(formData.courses),
+      formData.preferredTiming,
+      formData.reason,
+      JSON.stringify(formData.qualification),
+      formData.institution,
+      formData.graduationYear,
+      formData.experience,
+      formData.relevantExperience,
+      formData.paymentOption,
+      formData.paymentMethod,
+      formData.transactionId,
+      formData.declaration ? 1 : 0,
+      formData.student_id,
+      formData.password,
+    ];
+
+    const [result] = await promisePool.query(query, values);
+
+    res.status(201).json({
+      message: 'Registration data saved successfully',
+      registrationId: result.insertId,
+    });
+  } catch (err) {
+    console.error('SQL Error:', err.message);
+    res.status(500).json({ message: 'Database error', error: err.message });
+  }
+});
+
+// Get Latest Student ID API
+app.get('/get-latest-student-id', async (req, res) => {
+  try {
+    const query = `SELECT student_id FROM registrations ORDER BY id DESC LIMIT 1`;
+    const [result] = await promisePool.query(query);
+
+    const latestStudentId = result.length > 0 ? result[0].student_id : null;
+
+    res.status(200).json({ latestStudentId });
+  } catch (err) {
+    console.error('Error fetching latest student ID:', err.message);
+    res.status(500).json({ message: 'Failed to fetch latest student ID' });
+  }
+});
+
+// Get all registration data API
+app.get('/get-registrations', async (req, res) => {
+  try {
+    const query = 'SELECT * FROM registrations';
+    const [registrations] = await promisePool.query(query);
+
+    res.status(200).json({
+      message: 'Registration data fetched successfully',
+      registrations: registrations,
+    });
+  } catch (err) {
+    console.error('Error fetching registration data:', err.message);
+    res.status(500).json({ message: 'Failed to fetch registration data' });
+  }
+});
+
+/////////////////////////////////////////////////
 
   // Handle other requests through Express
   app(req, res);
