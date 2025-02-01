@@ -95,7 +95,7 @@ const Navbar = () => {
                 <img
                   src={Logo}
                   alt="Logo"
-                  style={{ height: "70px", width: "auto", cursor: "pointer", marginTop: "7%", marginLeft:"-80%" }}
+                  style={{ height: "70px", width: "auto", cursor: "pointer", marginTop: "7%",}}
                 />
               </StyledLink>
 

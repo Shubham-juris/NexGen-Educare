@@ -19,6 +19,8 @@ import About from "./Components/About-Us/About";
 import Courses from "./Components/Courses/WebTech/Courses";
 import HeroSection from "./Components/Hero/HeroSection";
 import ContactUs from './Components/Contact-Us/Contact'
+import Notice from "./Components/Admin/Notification/Notice";
+import CreateNotice from "./Components/Admin/Create-notice/CreateNotice";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,6 +55,8 @@ function App() {
           <Route path="TeacherData" element={<TeacherData />} />
           <Route path="Library" element={<Library />} />
           <Route path="RegistrationForm" element={<RegistrationForm />} />
+          <Route path='Notice' element={<Notice/>}/>
+          <Route path='CreateNotice' element={<CreateNotice/>}/>
         </Route>
       </Routes>
     </Router>

@@ -110,7 +110,7 @@ const SignUpBanner = () => {
               <br />
               Sign up and take the first step toward your goals.
             </Typography>
-            <Link to="/signup" style={{ textDecoration: 'none' }}> {/* Replace '/signup' with your desired path */}
+            <Link to="/Login" style={{ textDecoration: 'none' }}> {/* Replace '/signup' with your desired path */}
       <Button
         variant="contained"
         sx={{
@@ -122,7 +122,7 @@ const SignUpBanner = () => {
           textTransform: 'none',
         }}
       >
-        Sign up
+        Log in 
       </Button>
     </Link>
           </Grid>

@@ -8,7 +8,7 @@ import {
   IconButton,
   InputAdornment,
 } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, ArrowBack } from '@mui/icons-material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -75,7 +75,7 @@ const AdminLogin = () => {
         backgroundColor: '#f5f5f5',
       }}
     >
-      <Container maxWidth='xs'>
+      <Container maxWidth="xs">
         <Box
           sx={{
             display: 'flex',
@@ -85,38 +85,45 @@ const AdminLogin = () => {
             padding: 4,
             borderRadius: 2,
             boxShadow: 3,
+            position: 'relative',
+            width: '100%',
           }}
         >
-          <Typography component='h1' variant='h5' sx={{ mb: 2 }}>
+          {/* Back Button */}
+          <IconButton
+            onClick={() => navigate(-1)}
+            sx={{ position: 'absolute', top: 10, left: 10 }}
+          >
+            <ArrowBack />
+          </IconButton>
+
+          <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
             Admin Login
           </Typography>
-          <Box component='form' onSubmit={handleSubmit} sx={{ width: '100%' }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
             <TextField
-              margin='normal'
+              margin="normal"
               required
               fullWidth
-              id='username'
-              label='Admin ID'
-              name='username'
-              autoComplete='username'
+              id="username"
+              label="Admin ID"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField
-              margin='normal'
+              margin="normal"
               required
               fullWidth
-              name='password'
-              label='Password'
+              name="password"
+              label="Password"
               type={showPassword ? 'text' : 'password'}
-              id='password'
-              autoComplete='current-password'
+              id="password"
+              autoComplete="current-password"
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position='end'>
-                    <IconButton
-                      onClick={handleTogglePasswordVisibility}
-                      edge='end'
-                    >
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleTogglePasswordVisibility} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -124,15 +131,15 @@ const AdminLogin = () => {
               }}
             />
             {loginError && (
-              <Typography color='error' sx={{ mt: 1, textAlign: 'center' }}>
+              <Typography color="error" sx={{ mt: 1, textAlign: 'center' }}>
                 {loginError}
               </Typography>
             )}
             <Button
-              type='submit'
+              type="submit"
               fullWidth
-              variant='contained'
-              color='primary'
+              variant="contained"
+              color="primary"
               disabled={loading}
               sx={{ mt: 3, mb: 2 }}
             >
@@ -141,7 +148,7 @@ const AdminLogin = () => {
           </Box>
         </Box>
       </Container>
-      <ToastContainer position='top-center' autoClose={5000} />
+      <ToastContainer position="top-center" autoClose={5000} />
     </Box>
   );
 };

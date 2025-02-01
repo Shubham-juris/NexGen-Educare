@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom"; // Import Outlet for nested routes
 import {
   Box,
@@ -9,28 +9,25 @@ import {
   ListItemText,
   IconButton,
   Avatar,
-  Menu,
-  MenuItem,
   useMediaQuery,
+  Badge,
 } from "@mui/material";
 import {
-  Dashboard,
   People,
   School,
   MenuBook,
   Notifications,
-  Message,
-  AddBox,
   UploadFile,
-  AccountCircle,
   HowToReg,
 } from "@mui/icons-material";
+import AnnouncementIcon from '@mui/icons-material/Announcement';
 import { useTheme } from "@mui/material/styles";
 import Logo from "../../../assets/Admin/Sidebarlogo/Logo.webp"; // Update with correct path
 
 const Sidebar = () => {
   const [profileMenuAnchor, setProfileMenuAnchor] = useState(null);
   const theme = useTheme();
+  const [noticeCount, setNoticeCount] = useState(0);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false); // State to toggle submenus (if needed)
 
@@ -41,6 +38,11 @@ const Sidebar = () => {
   const handleProfileMenuClose = () => {
     setProfileMenuAnchor(null);
   };
+
+  useEffect(() => {
+    const storedNotices = JSON.parse(localStorage.getItem("notices")) || [];
+    setNoticeCount(storedNotices.length);
+  }, []);
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
@@ -124,7 +126,17 @@ const Sidebar = () => {
             </ListItemIcon>
             {!isMobile && <ListItemText primary="Enrollment" />}
           </ListItem>
-
+          <ListItem
+            button
+            component={Link}
+            to="CreateNotice" // Nested route for Registration Form
+            sx={{ "&:hover": { bgcolor: "#636e72" } }}
+          >
+            <ListItemIcon>
+              <AnnouncementIcon sx={{ color: "inherit" }} />
+            </ListItemIcon>
+            {!isMobile && <ListItemText primary="Create Notice" />}
+          </ListItem>
           <ListItem
             button
             component={Link}
@@ -166,20 +178,22 @@ const Sidebar = () => {
         >
           <Typography variant="h6">Admin Dashboard</Typography>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <IconButton component={Link} to="/notice">
-              <Notifications />
+            <IconButton component={Link} to="Notice">
+              <Badge badgeContent={noticeCount} color="error">
+                <Notifications />
+              </Badge>
             </IconButton>
-            <IconButton component={Link} to="/AddCourse">
+            {/* <IconButton component={Link} to="#">
               <Message />
-            </IconButton>
-            <IconButton onClick={handleProfileMenuOpen}>
+            </IconButton> */}
+            {/* <IconButton onClick={handleProfileMenuOpen}>
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Box>
 
         {/* Profile Menu */}
-        <Menu
+        {/* <Menu
           anchorEl={profileMenuAnchor}
           open={Boolean(profileMenuAnchor)}
           onClose={handleProfileMenuClose}
@@ -187,12 +201,13 @@ const Sidebar = () => {
           <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
           <MenuItem onClick={handleProfileMenuClose}>Settings</MenuItem>
           <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
-        </Menu>
+        </Menu> */}
 
         {/* Main Content Area */}
         <Box sx={{ flex: 1, p: 2 }}>
           {/* The content will change based on nested routes */}
-          <Outlet /> {/* This renders the content for the active nested route */}
+          <Outlet />{" "}
+          {/* This renders the content for the active nested route */}
         </Box>
       </Box>
     </Box>

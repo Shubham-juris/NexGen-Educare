@@ -14,7 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, ArrowBack } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import LoginImage from '../../assets/Login&Signup/Login&Signup.jpg';
 
@@ -46,9 +46,9 @@ const Login = ({ onLogin }) => {
         const data = await response.json();
         setOpenSnackbar(true);
         setLoginError('');
-        onLogin(data.user); // Update login state with user data
+        onLogin(data.user);
         setTimeout(() => {
-          navigate('/Sdashboard'); // Redirect to student dashboard
+          navigate('/Sdashboard');
         }, 1000);
       } else {
         const errorData = await response.json();
@@ -79,7 +79,6 @@ const Login = ({ onLogin }) => {
         backgroundImage: `url(${LoginImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        
       }}
     >
       <Container maxWidth="xs">
@@ -99,17 +98,22 @@ const Login = ({ onLogin }) => {
               padding: 4,
               borderRadius: 2,
               boxShadow: 3,
+              position: 'relative',
+              width: '100%',
             }}
           >
+            {/* Back Button */}
+            <IconButton
+              onClick={() => navigate(-1)}
+              sx={{ position: 'absolute', top: 10, left: 10 }}
+            >
+              <ArrowBack />
+            </IconButton>
+
             <Typography component="h1" variant="h5">
               Login
             </Typography>
-            <Box
-              key={formKey}
-              component="form"
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
+            <Box key={formKey} component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <TextField
                 margin="normal"
                 required
@@ -132,10 +136,7 @@ const Login = ({ onLogin }) => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleTogglePasswordVisibility}
-                        edge="end"
-                      >
+                      <IconButton onClick={handleTogglePasswordVisibility} edge="end">
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -143,29 +144,16 @@ const Login = ({ onLogin }) => {
                 }}
               />
               {loginError && (
-                <Typography
-                  color="error"
-                  sx={{ mt: 1, textAlign: 'center' }}
-                >
+                <Typography color="error" sx={{ mt: 1, textAlign: 'center' }}>
                   {loginError}
                 </Typography>
               )}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
+              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Login
               </Button>
 
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-               
-                <Link
-                  href="#"
-                  variant="body2"
-                  sx={{ textDecoration: 'none' }}
-                >
+                <Link href="#" variant="body2" sx={{ textDecoration: 'none' }}>
                   Forgot password?
                 </Link>
               </Box>
@@ -179,11 +167,7 @@ const Login = ({ onLogin }) => {
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="success"
-          sx={{ width: '100%' }}
-        >
+        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
           Login successful! Redirecting...
         </Alert>
       </Snackbar>

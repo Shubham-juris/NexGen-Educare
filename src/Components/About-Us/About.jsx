@@ -111,6 +111,7 @@ const About = () => {
       {/* About Section */}
       <Box
         sx={{
+          
           display: 'flex',
           flexDirection: { xs: 'column', sm: 'row' },
           justifyContent: 'center',

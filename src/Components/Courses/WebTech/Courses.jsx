@@ -68,7 +68,7 @@ const Courses = () => {
           <MonographCoursesCards />
         </div>
       </div>
-      <SignUpBanner />{" "}
+      <SignUpBanner />
     </>
   );
 };
